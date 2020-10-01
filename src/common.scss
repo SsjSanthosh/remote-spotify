@@ -1,0 +1,9 @@
+@import "./colors.scss";
+.page {
+  min-height: 100vh;
+  background-color: $BACKGROUND_COLOR;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.6);
+}

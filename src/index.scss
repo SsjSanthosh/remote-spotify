@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Gotham-Light";
+  src: url("./assets/fonts/Gotham-Light.otf") format("opentype"),
+    url("./assets/fonts/GothamLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gotham-Medium";
+  src: url("./assets/fonts/GothamMedium.ttf") format("truetype");
+}
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Gotham-Light";
+}
+
+code {
+}
