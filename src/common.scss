@@ -9,3 +9,21 @@
 .text-muted {
   color: rgba(255, 255, 255, 0.6);
 }
+
+.hover-accent {
+  &:hover {
+    color: var(--accent-color);
+  }
+}
+
+.hover-white {
+  &:hover {
+    color: #fff;
+    transition: scale(1.1);
+  }
+  transition: all 0.2s ease-in-out;
+}
+
+.accent-active {
+  color: var(--accent-color);
+}

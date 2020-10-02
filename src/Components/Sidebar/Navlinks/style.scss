@@ -1,0 +1,27 @@
+@import "src/colors.scss";
+.sidebar-navlinks-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid white;
+  padding-bottom: 1em;
+
+  .navlink {
+    font-weight: 300;
+    padding: 1.5em 0.5em;
+    display: flex;
+    justify-content: flex-start;
+    text-decoration: none;
+    color: var(--muted-color);
+    border-left: 5px solid transparent;
+    .navlink-icon {
+      margin-right: 16px;
+    }
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+  .active {
+    border-left: 5px solid var(--accent-color);
+    color: var(--accent-color);
+  }
+}

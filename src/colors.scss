@@ -4,7 +4,7 @@ $css-vars-use-native: true;
 $BACKGROUND_COLOR: #000;
 $ACCENT_COLOR: #1db954;
 $MUTED_COLOR: rgba(255, 255, 255, 0.7);
-$TEXT_COLOR: #fff;
+$TEXT_COLOR: rgb(255, 255, 255);
 
 @include css-vars(
   (

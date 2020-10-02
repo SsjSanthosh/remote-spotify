@@ -1,0 +1,22 @@
+.player-wrapper {
+  background-color: #282828;
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  .player-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    height: 100%;
+    .player-buttons {
+      width: 300px;
+      align-self: center;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .player-progressbar {
+    }
+  }
+}

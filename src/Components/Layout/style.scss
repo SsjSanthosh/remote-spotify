@@ -10,8 +10,8 @@
       min-height: 100vh;
     }
     .sidebar-wrapper {
-      min-width: 15%;
-      background-color: rgb(185, 3, 185);
+      width: 15%;
+      background-color: black;
     }
     .page-content {
       flex-grow: 1;
@@ -21,8 +21,7 @@
   .player-wrapper {
     position: fixed;
     bottom: 0;
-    height: 5vh;
+    height: 10vh;
     width: 100vw;
-    background-color: orange;
   }
 }

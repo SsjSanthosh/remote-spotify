@@ -1,0 +1,41 @@
+.track-wrapper {
+  display: flex;
+
+  padding: 0.7em 0;
+  max-width: 250px;
+  justify-content: space-evenly;
+
+  .track-cover {
+    width: 65px;
+    height: 65px;
+    align-self: center;
+
+    > img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .track-details {
+    display: flex;
+    font-size: 14px;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .track-name {
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .track-artist {
+      font-weight: 200;
+    }
+  }
+  .track-fav-icon {
+    align-self: center;
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    transition: all 0.2s ease-in-out;
+  }
+}

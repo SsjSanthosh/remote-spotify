@@ -1,17 +1,31 @@
+/* Medium */
 @font-face {
-  font-family: "Gotham-Light";
+  font-family: "Gotham";
+  src: url("./assets/fonts/GothamMedium.ttf") format("truetype");
+  font-weight: 500;
+}
+/* Light */
+@font-face {
+  font-family: "Gotham";
   src: url("./assets/fonts/Gotham-Light.otf") format("opentype"),
     url("./assets/fonts/GothamLight.ttf") format("truetype");
+  font-weight: 300;
 }
 
+/* Lighter */
 @font-face {
-  font-family: "Gotham-Medium";
-  src: url("./assets/fonts/GothamMedium.ttf") format("truetype");
+  font-family: "Gotham";
+  src: url("./assets/fonts/Gotham-Thin.otf") format("opentype");
+  font-weight: 200;
 }
 * {
   padding: 0;
   margin: 0;
-  font-family: "Gotham-Light";
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+
+  box-sizing: border-box;
+
   // color: #fff;
 }
 
