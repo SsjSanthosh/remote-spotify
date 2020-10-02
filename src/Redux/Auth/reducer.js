@@ -1,10 +1,13 @@
 import { AUTH_ACTIONS } from "../../constants";
+import SpotifyWebApi from "spotify-web-api-js";
+import { setTokenLocally } from "../../utils";
 
 const initialState = {
-  token: "hi there",
-  scope: "",
+  token: null,
   refreshToken: null,
-  isAuthenticated: false,
+  username: null,
+  image: null,
+  webPlayer: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -12,9 +15,11 @@ const authReducer = (state = initialState, action) => {
   switch (type) {
     case AUTH_ACTIONS.SET_AUTH_TOKEN:
       return {
-        token: payload.access_token,
-        refreshToken: payload.refresh_token,
-        scope: payload.scope,
+        ...state,
+        token: payload.token,
+        username: payload.username,
+        image: payload.images[0].url,
+        webPlayer: payload.external_urls.spotify,
       };
     default:
       return state;

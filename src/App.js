@@ -1,30 +1,42 @@
-import React from "react";
-import { Provider } from "react-redux";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { connect, Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import "./common.scss";
+import { USER_INFO_API_ENDPOINT } from "./endpoints";
 import Login from "./Pages/Login/";
 import Redirect from "./Pages/Redirect/";
+import { setAccessToken } from "./Redux/Auth/actions";
 
-import store from "./Redux/store";
+import { isTokenInLocalStorage } from "./utils";
 
-function App() {
+function App({ setAccessToken }) {
+  useEffect(() => {
+    const token = isTokenInLocalStorage();
+    if (token) {
+      setAccessToken(token);
+      // axios
+      //   .get(USER_INFO_API_ENDPOINT, {
+      //     headers: { Authorization: "Bearer " + token },
+      //   })
+      //   .then((res) => console.log("from", res.data));
+    }
+  }, []);
   return (
-    <Provider store={store}>
-      <div className="App">
-        <BrowserRouter>
-          <Switch>
-            <Route exact path={["/", "/login"]} component={Login}></Route>
-            <Route
-              exact
-              path="/redirect"
-              render={(props) => <Redirect {...props} />}
-            />
-          </Switch>
-        </BrowserRouter>
-      </div>
-    </Provider>
+    <div className="App">
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={["/", "/login"]} component={Login}></Route>
+          <Route
+            exact
+            path="/redirect"
+            render={(props) => <Redirect {...props} />}
+          />
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 
-export default App;
+export default connect(null, { setAccessToken })(App);

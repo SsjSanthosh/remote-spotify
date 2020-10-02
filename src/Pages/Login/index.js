@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { AUTHORIZE_REDIRECT_LINK } from "../../endpoints";
 
 import "./style.scss";
-function Login() {
+function Login({ auth }) {
+  console.log(auth);
   return (
     <div className="page">
       <div className="page-login">
@@ -30,4 +31,8 @@ function Login() {
   );
 }
 
-export default Login;
+const mapStateToProps = ({ auth }) => {
+  return { auth };
+};
+
+export default connect(mapStateToProps)(Login);

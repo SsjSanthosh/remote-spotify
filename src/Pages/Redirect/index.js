@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import SpotifyWebApi from "spotify-web-api-js";
 
-const spotify = new SpotifyWebApi();
-function Redirect(props) {
+import { connect } from "react-redux";
+import { setAccessToken } from "../../Redux/Auth/actions";
+
+function Redirect({ setAccessToken, ...props }) {
   useEffect(() => {
-    const accessToken = window.location.hash
+    let token = window.location.hash
       .split("&")[0]
       .replace("#access_token=", "");
-  }, []);
+    setAccessToken(token);
+    // }
+  }, [setAccessToken]);
 
   return <div>This is the redirect page!</div>;
 }
 
-export default Redirect;
+export default connect(null, { setAccessToken })(Redirect);
