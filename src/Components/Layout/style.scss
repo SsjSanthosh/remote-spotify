@@ -1,0 +1,28 @@
+.layout {
+  .search-wrapper {
+    position: absolute;
+    left: 50%;
+  }
+  .layout-page {
+    display: flex;
+    .sidebar-wrapper,
+    page-content {
+      min-height: 100vh;
+    }
+    .sidebar-wrapper {
+      min-width: 15%;
+      background-color: rgb(185, 3, 185);
+    }
+    .page-content {
+      flex-grow: 1;
+      background-color: crimson;
+    }
+  }
+  .player-wrapper {
+    position: fixed;
+    bottom: 0;
+    height: 5vh;
+    width: 100vw;
+    background-color: orange;
+  }
+}

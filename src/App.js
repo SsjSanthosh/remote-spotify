@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import "./common.scss";
 import { USER_INFO_API_ENDPOINT } from "./endpoints";
+import Home from "./Pages/Home";
 import Login from "./Pages/Login/";
 import Redirect from "./Pages/Redirect/";
 import { setAccessToken } from "./Redux/Auth/actions";
@@ -27,12 +28,13 @@ function App({ setAccessToken }) {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exact path={["/", "/login"]} component={Login}></Route>
+          <Route exact path="/login" component={Login}></Route>
           <Route
             exact
             path="/redirect"
             render={(props) => <Redirect {...props} />}
           />
+          <Route exact path="/" component={Home}></Route>
         </Switch>
       </BrowserRouter>
     </div>

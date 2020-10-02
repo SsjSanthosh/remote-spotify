@@ -1,1 +1,16 @@
+@import "css-vars/css-vars";
+$css-vars-use-native: true;
+
 $BACKGROUND_COLOR: #000;
+$ACCENT_COLOR: #1db954;
+$MUTED_COLOR: rgba(255, 255, 255, 0.7);
+$TEXT_COLOR: #fff;
+
+@include css-vars(
+  (
+    --bg-color: $BACKGROUND_COLOR,
+    --accent-color: $ACCENT_COLOR,
+    --muted-color: $MUTED_COLOR,
+    --text-color: $TEXT_COLOR,
+  )
+);
