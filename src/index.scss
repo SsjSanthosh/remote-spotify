@@ -1,28 +1,35 @@
-/* Medium */
+// Regular
 @font-face {
-  font-family: "Gotham";
-  src: url("./assets/fonts/GothamMedium.ttf") format("truetype");
-  font-weight: 500;
+  font-family: "Rubik";
+  src: url("./assets/fonts/Rubik-Regular.ttf") format("truetype");
+  font-weight: 400;
 }
-/* Light */
+
+// Light
 @font-face {
-  font-family: "Gotham";
-  src: url("./assets/fonts/Gotham-Light.otf") format("opentype"),
-    url("./assets/fonts/GothamLight.ttf") format("truetype");
+  font-family: "Rubik";
+  src: url("./assets/fonts/Rubik-Light.ttf") format("truetype");
   font-weight: 300;
 }
 
-/* Lighter */
+// Medium
 @font-face {
-  font-family: "Gotham";
-  src: url("./assets/fonts/Gotham-Thin.otf") format("opentype");
-  font-weight: 200;
+  font-family: "Rubik";
+  src: url("./assets/fonts/Rubik-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+// Bold
+@font-face {
+  font-family: "Rubik";
+  src: url("./assets/fonts/Rubik-Bold.ttf") format("truetype");
+  font-weight: 600;
 }
 * {
   padding: 0;
   margin: 0;
   font-family: "Rubik", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
 
   box-sizing: border-box;
 

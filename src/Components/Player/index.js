@@ -49,21 +49,13 @@ function Player() {
       activeClass: "active-accent",
     },
   ];
-
-  const [progress, setProgress] = useState(0);
-  useEffect(() => {
-    setInterval(() => {
-      setProgress(progress + 10);
-    }, 1000);
-  }, [progress]);
-  console.log(progress);
   return (
     <div className="player-wrapper">
       <Track />
       <div className="player-controls">
         <div className="player-buttons">
           {PLAYER_CONTROLS.map((cont) => {
-            return <Control options={cont} />;
+            return <Control options={cont} key={cont.name} />;
           })}
         </div>
         <div className="player-progressbar">

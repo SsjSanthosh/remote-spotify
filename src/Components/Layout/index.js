@@ -8,9 +8,10 @@ import "./style.scss";
 function Layout(props) {
   return (
     <div className="layout">
-      <Search />
+      {/* <Search /> */}
       <div className="layout-page">
         <Sidebar />
+
         {props.children}
       </div>
       <Player />

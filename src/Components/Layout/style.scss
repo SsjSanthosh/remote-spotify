@@ -1,4 +1,7 @@
+@import "../../colors.scss";
 .layout {
+  overflow: hidden;
+  min-height: 100vh;
   .search-wrapper {
     position: absolute;
     left: 50%;
@@ -7,15 +10,25 @@
     display: flex;
     .sidebar-wrapper,
     page-content {
-      min-height: 100vh;
+      height: 100vh;
     }
     .sidebar-wrapper {
-      width: 15%;
-      background-color: black;
+      min-width: 20vw;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+      background-color: var(--background-color);
     }
     .page-content {
-      flex-grow: 1;
-      background-color: crimson;
+      height: inherit;
+      padding: 2em;
+      min-height: 100vh;
+      min-width: 80vw;
+      background-color: var(--page-bg);
+      padding-bottom: 5vw;
+      padding-top: 4em;
+      overflow: auto;
+      margin-left: 20vw;
     }
   }
   .player-wrapper {

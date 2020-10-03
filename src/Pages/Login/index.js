@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { AUTHORIZE_REDIRECT_LINK } from "../../endpoints";
+import { AUTHORIZE_REDIRECT_LINK } from "utils/endpoints";
 
 import "./style.scss";
 function Login({ auth }) {
-  console.log(auth);
   return (
     <div className="page">
       <div className="page-login">

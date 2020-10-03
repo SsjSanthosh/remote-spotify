@@ -2,15 +2,18 @@
 $css-vars-use-native: true;
 
 $BACKGROUND_COLOR: #000;
+$PAGE_BG: #1b1b1b;
 $ACCENT_COLOR: #1db954;
 $MUTED_COLOR: rgba(255, 255, 255, 0.7);
-$TEXT_COLOR: rgb(255, 255, 255);
-
+$TEXT_COLOR: rgba(255, 255, 255, 0.7);
+$HIGHLIGHT_COLOR: rgba(255, 255, 255, 1);
 @include css-vars(
   (
     --bg-color: $BACKGROUND_COLOR,
     --accent-color: $ACCENT_COLOR,
     --muted-color: $MUTED_COLOR,
     --text-color: $TEXT_COLOR,
+    --page-bg: $PAGE_BG,
+    --highlight-color: $HIGHLIGHT_COLOR,
   )
 );
