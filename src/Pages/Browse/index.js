@@ -3,15 +3,16 @@ import Category from "Components/Common/Category";
 
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getBrowseCategories } from "Redux/Data/actions";
+import { getDataFromEndpoint } from "Redux/Data/actions";
+
+import { BROWSE_CATEGORIES_API_ENDPOINT } from "utils/endpoints";
 
 import Layout from "../../Components/Layout";
 
 import "./style.scss";
-function Browse({ categories, loading, getBrowseCategories }) {
+function Browse({ loading, getDataFromEndpoint, categories }) {
   useEffect(() => {
-    console.log("in page", axios.defaults.headers.common);
-    getBrowseCategories();
+    getDataFromEndpoint(BROWSE_CATEGORIES_API_ENDPOINT);
   }, []);
   return (
     <Layout>
@@ -25,9 +26,10 @@ function Browse({ categories, loading, getBrowseCategories }) {
         <div className="browse-page-content-wrapper">
           {loading && <p className="fs-1-5">Loading</p>}
           {!loading &&
-            categories &&
+            categories.items &&
+            categories.items &&
             categories.items.map((item) => {
-              return <Category category={item} />;
+              return <Category category={item} key={item.name} />;
             })}
         </div>
       </div>
@@ -36,8 +38,8 @@ function Browse({ categories, loading, getBrowseCategories }) {
 }
 
 const mapStateToProps = ({ data }) => ({
-  categories: data.browse.categories,
   loading: data.loading,
+  categories: data.data.categories,
 });
 
-export default connect(mapStateToProps, { getBrowseCategories })(Browse);
+export default connect(mapStateToProps, { getDataFromEndpoint })(Browse);

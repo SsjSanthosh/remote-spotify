@@ -14,9 +14,9 @@ import Library from "./Pages/Library";
 import Login from "./Pages/Login/";
 import Genre from "./Pages/Genre";
 import Redirect from "./Pages/Redirect/";
-import { setBackendToken, setAccessToken } from "./Redux/Auth/actions";
+import Playlists from "./Pages/Playlists/";
 
-import { getBrowseCategories } from "./Redux/Data/actions";
+import { setBackendToken, setAccessToken } from "./Redux/Auth/actions";
 
 const cookie = new Cookie();
 (function () {
@@ -28,7 +28,7 @@ const cookie = new Cookie();
     });
   }
 })();
-function App({ setBackendToken, getBrowseCategories }) {
+function App({ setBackendToken }) {
   useEffect(() => {
     if (!cookie.get(COOKIE_NAME)) {
       setBackendToken();
@@ -49,10 +49,11 @@ function App({ setBackendToken, getBrowseCategories }) {
             path="/redirect"
             render={(props) => <Redirect {...props} />}
           />
-          <Route exact path={"/browse"} component={Browse}></Route>
+          <Route exact path={"/browse/"} component={Browse}></Route>
           <Route exact path="/library" component={Library}></Route>
           <Route exact path="/genre/:type" component={Genre} />
           <Route exact path={["/", "/login"]} component={Home}></Route>
+          <Route exact path="/playlists/:id" component={Playlists}></Route>
         </Switch>
       </BrowserRouter>
     </div>
@@ -62,5 +63,4 @@ function App({ setBackendToken, getBrowseCategories }) {
 export default connect(null, {
   setAccessToken,
   setBackendToken,
-  getBrowseCategories,
 })(App);

@@ -7,3 +7,8 @@ export const setTokenLocally = (token) => {
 export const isTokenInLocalStorage = () => {
   return localStorage.getItem("spotifyToken");
 };
+
+export const getDataFromEndpoint = (endpoint) => {
+  console.log(endpoint);
+  return axios.get(endpoint);
+};

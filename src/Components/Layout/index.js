@@ -1,17 +1,16 @@
 import React from "react";
 import Search from "../Search";
 import Player from "../Player";
-
+import { connect } from "react-redux";
 import Sidebar from "../Sidebar";
 
 import "./style.scss";
-function Layout(props) {
+function Layout({ token, ...props }) {
   return (
     <div className="layout">
       {/* <Search /> */}
       <div className="layout-page">
-        <Sidebar />
-
+        {/* <Sidebar /> */}
         {props.children}
       </div>
       <Player />
@@ -19,4 +18,10 @@ function Layout(props) {
   );
 }
 
-export default Layout;
+const mapStateToProps = ({ auth }) => {
+  return {
+    token: auth.token,
+  };
+};
+
+export default connect(mapStateToProps)(Layout);

@@ -4,6 +4,14 @@ a {
   text-decoration: none;
   color: var(--text-color);
 }
+
+button {
+  border: 0;
+  padding: 0;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border-radius: 20px;
+}
 // Nav-link styling
 .page-nav-links-wrapper {
   display: flex;
@@ -122,4 +130,8 @@ a {
 }
 .mb8 {
   margin-bottom: 8px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

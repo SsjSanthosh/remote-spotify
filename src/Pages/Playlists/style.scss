@@ -1,0 +1,45 @@
+.playlists-page-wrapper {
+  max-height: 350px;
+  .playlists-page-header {
+    display: flex;
+    .playlist-cover {
+      width: 270px;
+      height: 250px;
+      > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .playlist-info {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      justify-content: space-evenly;
+      .playlist-buttons {
+        display: flex;
+        justify-content: space-between;
+
+        .playlist-play-btn {
+          width: 100px;
+          padding: 0.5rem 1rem;
+          //   border-radius: ;
+        }
+      }
+    }
+  }
+  .tracklist-header {
+    // display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-top: 2rem;
+    .album,
+    .release,
+    .duration {
+      text-align: center;
+    }
+    // .duration {
+    //   text-align: right;
+    // }
+  }
+}

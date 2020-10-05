@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import "./style.scss";
 function Category({ category }) {
-  console.log(category);
+  console.log(category, "category");
+
   return (
     <Link to={`/genre/${category.id}`}>
       <div className="category">

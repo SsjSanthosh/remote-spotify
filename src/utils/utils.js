@@ -1,3 +1,9 @@
 export const slugToName = (slug) => {
   return slug.split("_").join(" ");
 };
+
+export const millisToDuration = (millis) => {
+  const minutes = Math.floor(millis / 60000);
+  const seconds = ((millis % 60000) / 1000).toFixed(0);
+  return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+};
