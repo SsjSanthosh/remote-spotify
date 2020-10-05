@@ -4,6 +4,10 @@ a {
   text-decoration: none;
   color: var(--text-color);
 }
+p {
+  margin: 0;
+  padding: 0;
+}
 
 button {
   border: 0;
@@ -81,6 +85,9 @@ button {
   color: var(--highlight-color);
 }
 
+.no-highlight {
+  color: var(--text-color);
+}
 .bg-accent {
   background-color: var(--accent-color);
 }
@@ -135,3 +142,12 @@ button {
 .cursor-pointer {
   cursor: pointer;
 }
+
+// .link {
+//   padding-bottom: 4px;
+//   border-bottom: 1px solid transparent;
+
+//   &:hover {
+//     border-bottom: 1px solid var(--text-color);
+//   }
+// }

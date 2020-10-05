@@ -31,3 +31,5 @@ export const AUTHORIZE_REDIRECT_LINK = `${BASE_URL}authorize?client_id=${
 export const AUTH_TOKEN_API_ENDPOINT = `${BASE_API_URL}token`;
 
 export const USER_INFO_API_ENDPOINT = `${BASE_API_URL}me`;
+
+export const ALBUM_API_ENDPOINT = `${BASE_API_URL}albums/{id}`;

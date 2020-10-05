@@ -12,6 +12,8 @@ import Browse from "./Pages/Browse";
 import Home from "./Pages/Home";
 import Library from "./Pages/Library";
 import Login from "./Pages/Login/";
+import Album from "./Pages/Album/";
+
 import Genre from "./Pages/Genre";
 import Redirect from "./Pages/Redirect/";
 import Playlists from "./Pages/Playlists/";
@@ -54,6 +56,7 @@ function App({ setBackendToken }) {
           <Route exact path="/genre/:type" component={Genre} />
           <Route exact path={["/", "/login"]} component={Home}></Route>
           <Route exact path="/playlists/:id" component={Playlists}></Route>
+          <Route exact path="/album/:id" component={Album}></Route>
         </Switch>
       </BrowserRouter>
     </div>

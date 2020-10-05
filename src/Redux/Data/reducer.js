@@ -1,7 +1,7 @@
 import { FETCH_ACTIONS } from "utils/constants";
 
 const initialState = {
-  loading: true,
+  loading: false,
   data: {},
 };
 const dataReducer = (state = initialState, action) => {

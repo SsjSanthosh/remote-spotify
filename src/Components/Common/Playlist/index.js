@@ -5,7 +5,6 @@ import React from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 function Playlist({ playlist }) {
-  console.log(playlist);
   return (
     <Link to={`/playlists/${playlist.id}`}>
       <div className="playlist ">

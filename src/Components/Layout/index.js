@@ -5,12 +5,14 @@ import { connect } from "react-redux";
 import Sidebar from "../Sidebar";
 
 import "./style.scss";
-function Layout({ token, ...props }) {
+import Navigation from "Components/Common/Navigation";
+function Layout({ token, history, ...props }) {
   return (
     <div className="layout">
       {/* <Search /> */}
+      {/* <Navigation /> */}
       <div className="layout-page">
-        {/* <Sidebar /> */}
+        <Sidebar />
         {props.children}
       </div>
       <Player />
