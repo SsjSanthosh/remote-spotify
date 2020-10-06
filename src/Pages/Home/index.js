@@ -1,15 +1,23 @@
 import Navigation from "Components/Common/Navigation";
 import React from "react";
+import { connect } from "react-redux";
 import Layout from "../../Components/Layout";
+import Generic from "./Generic";
 
 import "./style.scss";
-function Home(props) {
+import User from "./User";
+function Home({ loggedIn, ...props }) {
   return (
     <Layout>
       <Navigation history={props.history} />
-      <div className="page-content page-home">This is the home page!</div>
+      <div className="page-content home-page-wrapper">
+        {!loggedIn ? <Generic /> : <User />}
+      </div>
     </Layout>
   );
 }
 
-export default Home;
+const mapStateToProps = ({ auth }) => {
+  return { loggedIn: auth.loggedIn };
+};
+export default connect(mapStateToProps)(Home);

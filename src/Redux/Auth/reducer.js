@@ -7,6 +7,7 @@ const initialState = {
   username: null,
   image: null,
   webPlayer: null,
+  loggedIn: false,
 };
 
 const authReducer = (state = initialState, action) => {

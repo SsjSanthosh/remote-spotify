@@ -33,3 +33,5 @@ export const AUTH_TOKEN_API_ENDPOINT = `${BASE_API_URL}token`;
 export const USER_INFO_API_ENDPOINT = `${BASE_API_URL}me`;
 
 export const ALBUM_API_ENDPOINT = `${BASE_API_URL}albums/{id}`;
+
+export const FEATURED_PLAYLISTS_API_ENDPOINT = `${BASE_API_URL}browse/featured-playlists?country=IN&locale=en_IN&limit=10`;
