@@ -1,4 +1,3 @@
-import Navigation from "Components/Common/Navigation";
 import React from "react";
 import { connect } from "react-redux";
 import Layout from "../../Components/Layout";
@@ -9,7 +8,6 @@ import User from "./User";
 function Home({ loggedIn, ...props }) {
   return (
     <Layout>
-      <Navigation history={props.history} />
       <div className="page-content home-page-wrapper">
         {!loggedIn ? <Generic /> : <User />}
       </div>

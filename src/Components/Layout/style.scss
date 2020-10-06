@@ -2,10 +2,7 @@
 .layout {
   overflow: hidden;
   min-height: 100vh;
-  .search-wrapper {
-    position: absolute;
-    left: 50%;
-  }
+
   .layout-page {
     display: flex;
     .sidebar-wrapper,
@@ -13,7 +10,7 @@
       height: 100vh;
     }
     .sidebar-wrapper {
-      min-width: 20vw;
+      width: 15vw;
       position: fixed;
       height: 100%;
       overflow: auto;
@@ -28,7 +25,7 @@
       padding-bottom: 5vw;
       padding-top: 4em;
       overflow: auto;
-      margin-left: 20vw;
+      margin-left: 15vw;
     }
   }
   .player-wrapper {

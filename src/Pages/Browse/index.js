@@ -1,5 +1,4 @@
 import Category from "Components/Common/Category";
-import Navigation from "Components/Common/Navigation";
 
 import React, { useEffect, useState } from "react";
 
@@ -18,7 +17,6 @@ function Browse({ history }) {
   }, []);
   return (
     <Layout>
-      <Navigation history={history} />
       <div className="page page-content browse-page-wrapper">
         <p className="page-title highlight">Browse</p>
         <p className="page-content-title highlight fs-1-3 bb-1-w pb8">

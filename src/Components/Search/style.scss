@@ -1,1 +1,16 @@
-
+.search-wrapper {
+  position: absolute;
+  left: 30%;
+  top: 1%;
+  width: 350px;
+  > input {
+    width: 100%;
+    border: 0;
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    &:focus {
+      border: 0;
+      outline: 0;
+    }
+  }
+}

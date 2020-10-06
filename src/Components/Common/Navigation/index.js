@@ -4,6 +4,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import "./style.scss";
 function Navigation({ history }) {
@@ -19,4 +20,4 @@ function Navigation({ history }) {
   );
 }
 
-export default Navigation;
+export default withRouter(Navigation);

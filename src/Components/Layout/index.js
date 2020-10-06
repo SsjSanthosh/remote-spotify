@@ -9,8 +9,8 @@ import Navigation from "Components/Common/Navigation";
 function Layout({ token, history, ...props }) {
   return (
     <div className="layout">
-      {/* <Search /> */}
-      {/* <Navigation /> */}
+      <Search />
+      <Navigation />
       <div className="layout-page">
         <Sidebar />
         {props.children}

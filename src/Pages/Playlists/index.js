@@ -9,7 +9,6 @@ import { faCalendar, faClock } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.scss";
-import Navigation from "Components/Common/Navigation";
 import TrackHeader from "Components/Common/TrackHeader";
 function Playlists({ match, ...props }) {
   const [playlist, setPlaylist] = useState([]);
@@ -24,7 +23,6 @@ function Playlists({ match, ...props }) {
   console.log(playlist);
   return (
     <Layout>
-      <Navigation history={props.history} />
       <div className="page page-content playlists-page-wrapper">
         {playlist.tracks && (
           <>
