@@ -11,8 +11,11 @@ import { COOKIE_NAME } from "utils/constants";
 import Browse from "./Pages/Browse";
 import Home from "./Pages/Home";
 import Library from "./Pages/Library";
+import Search from "./Pages/Search";
+
 import Login from "./Pages/Login/";
 import Album from "./Pages/Album/";
+import Artist from "./Pages/Artist/";
 
 import Genre from "./Pages/Genre";
 import Redirect from "./Pages/Redirect/";
@@ -35,7 +38,6 @@ function App({ setBackendToken }) {
     if (!cookie.get(COOKIE_NAME)) {
       setBackendToken();
     } else {
-      console.log("cookieset");
       axios.defaults.headers.common["Authorization"] = `Bearer ${cookie.get(
         COOKIE_NAME
       )}`;
@@ -53,10 +55,13 @@ function App({ setBackendToken }) {
           />
           <Route exact path={"/browse/"} component={Browse}></Route>
           <Route exact path="/library" component={Library}></Route>
+          <Route exact path="/search" component={Search}></Route>
+
           <Route exact path="/genre/:type" component={Genre} />
           <Route exact path={["/", "/login"]} component={Home}></Route>
           <Route exact path="/playlists/:id" component={Playlists}></Route>
           <Route exact path="/album/:id" component={Album}></Route>
+          <Route exact path="/artist/:id" component={Artist}></Route>
         </Switch>
       </BrowserRouter>
     </div>

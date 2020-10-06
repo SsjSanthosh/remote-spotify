@@ -20,7 +20,7 @@ function Playlists({ match, ...props }) {
       setPlaylist(res.data);
     });
   }, []);
-  console.log(playlist);
+
   return (
     <Layout>
       <div className="page page-content playlists-page-wrapper">

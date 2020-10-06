@@ -1,0 +1,24 @@
+.search-item-wrapper {
+  display: flex;
+  width: 45%;
+  margin: 0.5rem;
+  justify-content: space-between;
+
+  .search-cover {
+    width: 100px;
+    height: 100px;
+    > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .search-info {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .search-title {
+    text-transform: capitalize;
+  }
+}

@@ -1,7 +1,6 @@
 import React from "react";
 
 function Header({ album }) {
-  console.log(album);
   return (
     <div className="album-header">
       <div className="album-cover">
@@ -13,7 +12,12 @@ function Header({ album }) {
         <span>
           By{" "}
           <span className="album-artists">
-            {album.artists.map((artist) => artist.name)}
+            {album.artists.map((artist, idx) => {
+              if (idx === album.artists.length - 1) {
+                return artist.name;
+              }
+              return artist.name + ", ";
+            })}
           </span>
         </span>
         <span className="album-year no-highlight">

@@ -11,6 +11,17 @@ export const millisToDuration = (millis) => {
 };
 
 export const getDataFromEndpoint = (endpoint) => {
-  console.log(endpoint);
   return axios.get(endpoint);
+};
+
+export const getLinkFromType = (type, item) => {
+  type = type.toLowerCase();
+  if (type === "track" && item.album) {
+    return `/album/${item.album.id}`;
+  }
+  return `/${type}/${item.id}`;
+};
+
+export const displayNumber = (num) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };

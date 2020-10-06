@@ -6,14 +6,13 @@ import { getDataFromEndpoint, slugToName } from "utils/utils";
 import "./style.scss";
 import Playlist from "Components/Common/Playlist";
 function Genre({ match, ...props }) {
-  console.log(props);
   const [genres, setGenres] = useState([]);
   useEffect(() => {
     getDataFromEndpoint(
       GENRE_PLAYLISTS_API_ENDPOINT.replace("{id}", match.params.type)
     ).then((res) => setGenres(res.data));
   }, [match]);
-  console.log(genres);
+
   return (
     <Layout>
       <div className="page-content genre-page-content-wrapper">

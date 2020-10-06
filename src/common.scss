@@ -131,7 +131,27 @@ button {
 .fs-1-5 {
   font-size: 1.5em;
 }
+.fs-1-6 {
+  font-size: 1.6em;
+}
 
+.fs-1-7 {
+  font-size: 1.7em;
+}
+
+.fs-1-8 {
+  font-size: 1.8em;
+}
+.fs-3 {
+  font-size: 3em;
+}
+
+.fs-4 {
+  font-size: 4em;
+}
+.fs-6 {
+  font-size: 6em;
+}
 .mb4 {
   margin-bottom: 4px;
 }
@@ -143,11 +163,22 @@ button {
   cursor: pointer;
 }
 
-// .link {
-//   padding-bottom: 4px;
-//   border-bottom: 1px solid transparent;
+.link {
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
 
-//   &:hover {
-//     border-bottom: 1px solid var(--text-color);
-//   }
-// }
+  &:hover {
+    border-bottom: 1px solid var(--text-color);
+  }
+}
+
+.hover-item {
+  &:hover {
+    background-color: #282828;
+  }
+}
+
+.border-bottom {
+  padding-bottom: 8px;
+  border-bottom: 2px solid #2b2b2b;
+}

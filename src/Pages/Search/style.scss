@@ -1,0 +1,15 @@
+.search-page-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  .search-flex {
+    width: 45%;
+    display: flex;
+    margin-right: 1rem;
+    flex-direction: column;
+    .search-items {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+  }
+}

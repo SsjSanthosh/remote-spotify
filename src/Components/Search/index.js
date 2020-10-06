@@ -5,8 +5,12 @@ import { withRouter } from "react-router-dom";
 
 import "./style.scss";
 function Search(props) {
-  console.log(props);
   const [search, setSearch] = useState("");
+  const handleSearch = (e) => {
+    if (e.charCode === 13 && search) {
+      props.history.push("/search?q=" + search);
+    }
+  };
   return (
     <div className="search-wrapper">
       <input
@@ -14,6 +18,7 @@ function Search(props) {
         placeholder={` Type and hit enter to search for artists, albums and more!`}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        onKeyPress={handleSearch}
       />
     </div>
   );
