@@ -1,16 +1,26 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 import { millisToDuration } from "utils/utils";
+import FavButton from "../FavButton";
+import PlayButton from "../PlayButton";
 
 import "./style.scss";
-function Track({ item }) {
+function Track({ item, contextUri, idx = null }) {
   const track = item.track ? item.track : item;
+  console.log(track);
   return (
-    <div className="track-wrapper hover-item cursor-pointer">
+    <div className="track-wrapper hover-item ">
       <div className="track ">
-        <p className="track-name">{track.name}</p>
+        <p className="track-name">
+          <PlayButton type="icon" uri={track.uri} contextUri={contextUri} />
+          {!window.location.href.includes("liked-songs") && (
+            <FavButton type="track" id={track.id} className="fav-button-md" />
+          )}
+          {track.name}
+        </p>
         {!window.location.href.includes("album") && (
-          <p className="track-artists link ">
+          <p className="track-artists hover-white">
             <Link to={`/artist/${track.artists[0].id}`}>
               {track.artists[0].name}
             </Link>
@@ -18,9 +28,9 @@ function Track({ item }) {
         )}
 
         {track.album && (
-          <p className="track-album link">
+          <span className="track-album hover-white">
             <Link to={`/album/${track.album.id}`}>{track.album.name}</Link>
-          </p>
+          </span>
         )}
         {item.added_at && (
           <p className="track-release">{item.added_at.slice(0, 10)}</p>

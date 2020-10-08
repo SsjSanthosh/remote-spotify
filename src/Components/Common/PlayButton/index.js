@@ -12,16 +12,15 @@ function PlayButton({
   uri = null,
   player,
 }) {
-  const [icon, setIcon] = useState(faPlay);
   const [playing, setPlaying] = useState(false);
+
   useEffect(() => {
-    console.log("inside useeffect", player.item && player.item.uri);
     if (
       player.is_playing &&
       (player.item.uri === uri ||
-        (player.context && player.context.uri === contextUri))
+        (!player.item && player.context && player.context.uri === contextUri) ||
+        (!uri && player.context && player.context.uri === contextUri))
     ) {
-      console.log("inside condition");
       setPlaying(true);
     } else {
       setPlaying(false);
@@ -39,12 +38,24 @@ function PlayButton({
   const renderButtonByType = () => {
     if (type === "icon") {
       return (
-        <span className="play-button play-button-icon" onClick={handleClick}>
+        <span
+          className={`play-button play-button-icon ${
+            playing ? "playing-visible" : ""
+          }`}
+          onClick={handleClick}
+        >
           <FontAwesomeIcon icon={playing ? faPause : faPlay} />
         </span>
       );
     } else {
-      return <span className="play-button play-button-text">Play</span>;
+      return (
+        <button
+          className="play-button play-button-text cursor-point"
+          onClick={handleClick}
+        >
+          {playing ? "Pause" : "Play"}
+        </button>
+      );
     }
   };
   return renderButtonByType();

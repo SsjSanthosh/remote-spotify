@@ -1,4 +1,6 @@
 import axios from "axios";
+import React from "react";
+import { Link } from "react-router-dom";
 import { BACKUP_IMAGE } from "utils/constants";
 export const slugToName = (slug) => {
   return slug.split("_").join(" ");
@@ -30,4 +32,29 @@ export const getImageFromObject = (obj) => {
   if (obj.type === "user") {
     return obj.images.length ? obj.images[0].url : BACKUP_IMAGE;
   }
+};
+
+export const getArtistsString = (artists) => {
+  return artists.map((artist, idx) => {
+    if (idx === artists.length - 1) {
+      return (
+        <Link
+          to={`/artist/${artist.id}`}
+          id={artist.id}
+          className="link fs-0-9"
+        >
+          {artist.name}
+        </Link>
+      );
+    }
+    return (
+      <Link
+        to={`/artist/${artist.id}`}
+        id={artist.id}
+        className="link hover-white fs-0-9"
+      >
+        {artist.name + " ,  "}
+      </Link>
+    );
+  });
 };

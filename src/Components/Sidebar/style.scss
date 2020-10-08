@@ -16,6 +16,13 @@
       font-size: 2rem;
     }
   }
+  .liked-songs {
+    padding: 1rem;
+    padding-left: 0;
+    .liked-songs-icon {
+      margin-right: 1rem;
+    }
+  }
   .sidebar-playlists {
     .sidebar-playlist {
       padding: 0.5rem 0;

@@ -14,6 +14,7 @@ const playerReducer = (state = initialState, action) => {
     case PLAYER_ACTIONS.SET_SHUFFLE:
       return { ...state, player: payload };
     default:
+    case PLAYER_ACTIONS.SAVE_TRACK:
       return state;
   }
 };

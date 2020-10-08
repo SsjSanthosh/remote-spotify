@@ -9,6 +9,31 @@
   border-bottom: 2px solid #282828;
   .track {
     display: flex;
+    transition: 0.2s all ease;
     margin: 0 auto;
+    &:hover {
+      .track-name {
+        .play-button-icon {
+          opacity: 1;
+        }
+      }
+    }
+    .track-name {
+      display: flex;
+      padding: 0 0.5rem;
+      align-items: center;
+      .play-button-icon {
+        width: 30px;
+        height: 30px;
+        opacity: 0;
+      }
+    }
+
+    .track-name,
+    .track-artists,
+    .track-album {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }

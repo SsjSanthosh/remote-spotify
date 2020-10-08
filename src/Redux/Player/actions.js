@@ -5,6 +5,7 @@ import {
   PLAYER_API_ENDPOINT,
   PLAY_RESOURCE_API_ENDPOINT,
   PREV_TRACK_API_ENDPOINT,
+  SAVE_TRACK_API_ENDPOINT,
   SET_REPEAT_API_ENDPOINT,
   SET_SHUFFLE_API_ENDPOINT,
 } from "utils/endpoints";
@@ -67,5 +68,13 @@ export const toggleShuffle = (state) => async (dispatch) => {
     SET_SHUFFLE_API_ENDPOINT.replace("{state}", state)
   );
   const player = await axios.get(PLAYER_API_ENDPOINT);
+
   dispatch({ type: PLAYER_ACTIONS.SET_SHUFFLE, payload: player.data });
+};
+
+export const saveTrack = (ids) => async (dispatch) => {
+  const save = await axios.put(
+    SAVE_TRACK_API_ENDPOINT.replace("{ids}", ids.split(","))
+  );
+  dispatch({ type: PLAYER_ACTIONS.SAVE_TRACK });
 };

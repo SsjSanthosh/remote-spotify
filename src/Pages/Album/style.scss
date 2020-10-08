@@ -3,6 +3,12 @@
   .album-header {
     display: flex;
     margin-bottom: 2rem;
+    .album-buttons {
+      display: flex;
+      align-items: center;
+      width: 200px;
+      justify-content: space-between;
+    }
     .album-cover {
       width: 150px;
       height: 150px;

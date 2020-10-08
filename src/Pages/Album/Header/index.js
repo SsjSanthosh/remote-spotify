@@ -1,3 +1,5 @@
+import FavButton from "Components/Common/FavButton";
+import PlayButton from "Components/Common/PlayButton";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -35,6 +37,10 @@ function Header({ album }) {
         </span>
         <span className="album-year no-highlight">
           {album.release_date.slice(0, 4)} . {album.tracks.items.length} songs
+        </span>
+        <span className="album-buttons mt16">
+          <PlayButton contextUri={album.uri} type="text" />
+          <FavButton type="album" id={album.id} className="fav-button-lg" />
         </span>
       </div>
     </div>

@@ -54,7 +54,7 @@ function Player({
       name: "play",
       icon: player.is_playing ? faPause : faPlay,
       onClick: player.is_playing ? () => pauseResource() : () => playResource(),
-      hoverClass: "hover-white",
+      hoverClass: "hover-white play-pause-button",
       activeClass: "",
     },
     {
@@ -72,9 +72,9 @@ function Player({
       activeClass: "active-accent",
     },
   ];
-  return (
+  return player.item ? (
     <div className="player-wrapper">
-      <Track />
+      <Track track={player && (player.item || player.context)} />
       <div className="player-controls">
         <div className="player-buttons">
           {PLAYER_CONTROLS.map((cont) => {
@@ -84,9 +84,13 @@ function Player({
         <div className="player-progressbar">
           <Progress bgcolor="green" completed={56} />
         </div>
-        <div></div>
+      </div>
+      <div className="player-devices-volume">
+        <span>Hello!</span>
       </div>
     </div>
+  ) : (
+    <p>Loading</p>
   );
 }
 

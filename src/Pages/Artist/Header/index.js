@@ -1,12 +1,14 @@
 import React from "react";
+import { BACKUP_IMAGE } from "utils/constants";
 import { displayNumber } from "utils/utils";
 
 function Header({ artist }) {
   const { name, followers } = artist;
+  const image = artist.images.length ? artist.images[0].url : BACKUP_IMAGE;
   return (
     <div className="artist-header">
       <div className="artist-image">
-        <img src={artist.images[0].url} alt={artist.name} />
+        <img src={image} alt={artist.name} />
       </div>
       <div className="artist-info">
         <p className="highlight fs-1-2 ">ARTIST</p>

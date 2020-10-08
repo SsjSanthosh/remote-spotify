@@ -5,6 +5,7 @@ import { BACKUP_IMAGE } from "utils/constants";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import PlayButton from "../PlayButton";
+import FavButton from "../FavButton";
 function Playlist({ playlist }) {
   const image = playlist.images.length ? playlist.images[0].url : BACKUP_IMAGE;
   return (
@@ -15,7 +16,13 @@ function Playlist({ playlist }) {
           {/* <FontAwesomeIcon icon={faPlay} className="playlist-play-icon" /> */}
           <PlayButton type="icon" contextUri={playlist.uri} />
         </div>
-        <FontAwesomeIcon icon={faHeart} className="playlist-fav hover-white" />
+        {!window.location.href.includes("library") && (
+          <FavButton
+            type="playlist"
+            id={playlist.id}
+            className="fav-button-lg"
+          />
+        )}
       </div>
       <Link to={`/playlists/${playlist.id}`}>
         <p className="playlist-name fs-1-2 highlight mt8 link ta-c">

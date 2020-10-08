@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BACKUP_IMAGE } from "utils/constants";
 
 function Related({ artists }) {
   return (
@@ -14,7 +15,7 @@ function Related({ artists }) {
             >
               <img
                 className="related-artist-image"
-                src={artist.images[0].url}
+                src={artist.images.length ? artist.images[0].url : BACKUP_IMAGE}
                 alt={artist.name}
               />
               <Link to={`/artist/${artist.id}`}>

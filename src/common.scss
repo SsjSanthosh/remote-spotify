@@ -20,6 +20,37 @@ button {
   }
 }
 
+.fav-button-div {
+  border: 1.5px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    .fav-button-icon {
+      color: white;
+    }
+  }
+}
+
+.fav-button-md {
+  width: 30px;
+  height: 30px;
+  border: none;
+  .fav-button-icon {
+    font-size: 1em;
+  }
+}
+
+.fav-button-lg {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 40px;
+  .fav-button-icon {
+    font-size: 1.2em;
+  }
+}
+
 .play-button-icon {
   height: 40px;
   width: 40px;
@@ -31,6 +62,14 @@ button {
   justify-content: center;
   padding-right: 5px;
   margin-right: 1rem;
+}
+
+.playing-visible {
+  opacity: 1 !important;
+}
+.play-button-text {
+  height: 30px;
+  width: 100px;
 }
 // Nav-link styling
 .page-nav-links-wrapper {
@@ -130,6 +169,17 @@ button {
   font-weight: 600;
 }
 
+.fs-0-6 {
+  font-size: 0.6em;
+}
+
+.fs-0-8 {
+  font-size: 0.8em;
+}
+
+.fs-0-9 {
+  font-size: 0.9em;
+}
 .fs-1 {
   font-size: 1em;
 }
@@ -197,7 +247,7 @@ button {
 .link {
   padding-bottom: 4px;
   border-bottom: 1px solid transparent;
-
+  display: inline-block !important;
   &:hover {
     border-bottom: 1px solid var(--text-color);
   }

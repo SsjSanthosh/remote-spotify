@@ -12,13 +12,15 @@
     }
     .playlist-info {
       display: flex;
+      margin-left: 2rem;
       flex-direction: column;
       padding: 1rem;
       justify-content: space-evenly;
       .playlist-buttons {
         display: flex;
         justify-content: space-between;
-
+        width: 350px;
+        align-items: center;
         .playlist-play-btn {
           width: 100px;
           padding: 0.5rem 1rem;

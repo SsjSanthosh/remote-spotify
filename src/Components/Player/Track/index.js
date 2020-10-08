@@ -2,20 +2,28 @@ import React from "react";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.scss";
-function Track() {
+import { BACKUP_IMAGE } from "utils/constants";
+import { getArtistsString } from "utils/utils";
+import { Link } from "react-router-dom";
+function Track({ track }) {
+  const image =
+    track.album && track.album.images.length
+      ? track.album.images[0].url
+      : BACKUP_IMAGE;
   return (
     <div className="player-track-wrapper">
       <div className="track-cover">
-        <img
-          src="https://cdn.vox-cdn.com/thumbor/vo9HqN5qIppUYdA6zu372trbr2E=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19855434/EUFpj5EU8AMESMa.jpeg"
-          alt="cover"
-        />
+        <img src={image} alt={track.name} />
       </div>
       <div className="track-details">
-        <span className="track-name">Future Nostalgia</span>
-        <span className="track-artist">Artist</span>
+        <Link to={`/album/${track.album.id}`}>
+          <span className="track-name highlight fs-1-1">
+            {track.name}
+            <FontAwesomeIcon icon={faHeart} className="track-fav-icon" />
+          </span>
+        </Link>
+        <span className="track-artist ">{getArtistsString(track.artists)}</span>
       </div>
-      <FontAwesomeIcon icon={faHeart} className="track-fav-icon" />
     </div>
   );
 }

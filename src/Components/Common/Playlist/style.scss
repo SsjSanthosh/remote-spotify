@@ -12,12 +12,16 @@
       width: 100%;
     }
     .playlist-fav {
+    }
+    .fav-button-div {
       position: absolute;
       bottom: 5%;
-    }
-    .playlist-fav {
       left: 2%;
       font-size: 1.6rem;
+      border: none;
+      .fav-button-icon {
+        // color: black;
+      }
     }
     .playlist-play-icon-div {
       position: absolute;

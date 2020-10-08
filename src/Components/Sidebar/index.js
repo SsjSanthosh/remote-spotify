@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { connect } from "react-redux";
 import Playlists from "./Playlists";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const Sidebar = React.memo(function Sidebar({ loggedIn, ...props }) {
   return (
     <div className="sidebar-wrapper">
@@ -15,8 +17,18 @@ const Sidebar = React.memo(function Sidebar({ loggedIn, ...props }) {
       </div>
       <div className="sidebar-content">
         <Navlinks />
-        <p className="highlight">PLAYLISTS</p>
-        {loggedIn && <Playlists />}
+        {loggedIn && (
+          <>
+            <Link to="/liked-songs">
+              <p className="hover-white hover-item cursor-pointer fs-1-2 liked-songs border-bottom mb16">
+                <FontAwesomeIcon icon={faHeart} className="liked-songs-icon" />{" "}
+                Liked songs
+              </p>
+            </Link>
+            <p className="highlight fs-1-1">PLAYLISTS</p>
+            <Playlists />
+          </>
+        )}
         {!loggedIn && (
           <p className="no-highlight fw-l">
             Please login to see your playlists here.

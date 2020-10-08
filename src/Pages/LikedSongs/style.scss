@@ -1,0 +1,78 @@
+.liked-songs-wrapper {
+  width: 60vw;
+  //   .tracklist-header {
+  //     display: flex;
+  //     margin: 0 auto;
+  //     width: 60%;
+
+  //     .title {
+  //       width: 35%;
+  //     }
+  //     .artists {
+  //       width: 25%;
+  //     }
+  //     .album {
+  //       width: 20%;
+  //     }
+  //     .release {
+  //       width: 15%;
+  //     }
+  //   }
+  //   .track-wrapper {
+  //     // width: 100%;
+  //     .track {
+  //       display: flex;
+  //       // justify-content: space-evenly;
+  //       .track-name {
+  //         width: 30%;
+  //         margin-left: 2rem;
+  //       }
+  //       .track-artists {
+  //         width: 20%;
+  //         text-align: center;
+  //       }
+  //     }
+  //   }
+  .tracklist-header {
+    display: flex;
+
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    .title {
+      width: 45%;
+    }
+    .artists {
+      width: 25%;
+    }
+    .album {
+      width: 30%;
+    }
+    .release {
+      width: 20%;
+    }
+  }
+  .liked-songs {
+    width: 90%;
+    margin: 0 auto;
+    .track-wrapper {
+      width: 100%;
+      .track {
+        width: 100%;
+        .track-name {
+          min-width: 35%;
+        }
+        .track-artists {
+          width: 20%;
+        }
+        .track-album {
+          width: 30%;
+        }
+        .track-release {
+          width: 20%;
+        }
+        // justify-content: space-evenly;
+      }
+    }
+  }
+}

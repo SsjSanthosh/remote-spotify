@@ -1,9 +1,9 @@
 .user-pill-wrapper {
-  position: absolute;
-  right: 5rem;
-  top: 1rem;
   display: flex;
   align-items: center;
+  padding: 4px;
+  background-color: black;
+  border-radius: 20px;
   .user-avatar {
     width: 40px;
     height: 40px;

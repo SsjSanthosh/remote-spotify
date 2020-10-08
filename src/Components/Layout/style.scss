@@ -34,4 +34,10 @@
     height: 10vh;
     width: 100vw;
   }
+  .top-right {
+    position: fixed;
+    z-index: 200;
+    right: 5rem;
+    top: 1rem;
+  }
 }

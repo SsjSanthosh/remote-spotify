@@ -12,7 +12,7 @@ const SCOPES = [
   // "user-read-currently-playing",
   "user-follow-read",
   "user-read-recently-played",
-  // "playlist-modify-private",
+  "playlist-modify-private",
   "user-library-read",
 ];
 const BASE_URL = "https://accounts.spotify.com/";
@@ -67,3 +67,11 @@ export const PREV_TRACK_API_ENDPOINT = `${BASE_API_URL}me/player/previous`;
 export const SET_REPEAT_API_ENDPOINT = `${BASE_API_URL}me/player/repeat?state={state}`;
 
 export const SET_SHUFFLE_API_ENDPOINT = `${BASE_API_URL}me/player/shuffle?state={state}`;
+
+export const USER_SAVED_TRACKS_API_ENDPOINT = `${BASE_API_URL}me/tracks?limit=20`;
+
+export const SAVE_TRACK_API_ENDPOINT = `${BASE_API_URL}me/tracks?ids={ids}`;
+
+export const SAVE_ALBUM_API_ENDPOINT = `${BASE_API_URL}me/albums?ids={ids}`;
+
+export const FOLLOW_PLAYLIST_API_ENDPOINT = `${BASE_API_URL}playlists/{id}/followers`;

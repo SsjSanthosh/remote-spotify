@@ -1,15 +1,12 @@
 .player-track-wrapper {
   display: flex;
-
-  padding: 0.7em 0;
-  max-width: 250px;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
 
   .track-cover {
-    width: 65px;
+    max-width: 65px;
     height: 65px;
     align-self: center;
-
+    margin-right: 1rem;
     > img {
       height: 100%;
       width: 100%;
@@ -20,7 +17,8 @@
     font-size: 14px;
     flex-direction: column;
     justify-content: space-evenly;
-
+    min-width: 180px;
+    max-width: 230px;
     .track-name {
       font-weight: 300;
       margin-bottom: 8px;
@@ -30,8 +28,10 @@
     }
   }
   .track-fav-icon {
-    align-self: center;
+    align-self: flex-start;
+    margin-top: 12px;
     opacity: 0.7;
+    margin-left: 1rem;
     &:hover {
       opacity: 1;
       transform: scale(1.2);

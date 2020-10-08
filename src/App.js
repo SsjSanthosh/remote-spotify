@@ -24,6 +24,7 @@ import Playlists from "./Pages/Playlists/";
 import { setBackendToken, setAuthToken } from "./Redux/Auth/actions";
 import Layout from "Components/Layout";
 import { setPlayer } from "Redux/Player/actions";
+import LikedSongs from "Pages/LikedSongs";
 
 const cookie = new Cookie();
 // TODO - Try to find another way to do this, seems like a hack-y solution
@@ -68,6 +69,7 @@ function App({ setBackendToken, setAuthToken, setPlayer }) {
             <Route exact path="/genre/:type" component={Genre} />
             <Route exact path={["/", "/login"]} component={Home}></Route>
             <Route exact path="/playlists/:id" component={Playlists}></Route>
+            <Route exact path="/liked-songs" component={LikedSongs}></Route>
             <Route exact path="/album/:id" component={Album}></Route>
             <Route exact path="/artist/:id" component={Artist}></Route>
           </Layout>

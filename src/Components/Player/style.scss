@@ -2,12 +2,21 @@
   background-color: #282828;
   width: 100vw;
   display: flex;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
+  align-items: center;
+  .player-track-wrapper {
+    justify-self: flex-start;
+    padding: 1rem;
+    min-width: 300px;
+    max-width: 400px;
+  }
   .player-controls {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 500px;
+    justify-self: center;
+    margin-left: 5rem;
+    width: 60%;
     height: 100%;
     .player-buttons {
       width: 300px;
@@ -15,6 +24,19 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
+      .play-pause-button {
+        padding: 8px;
+        display: flex;
+        align-self: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        margin-top: -8px;
+        border: 1px solid white;
+        .fa-play {
+          padding-left: 20px;
+        }
+      }
     }
     .player-progressbar {
     }

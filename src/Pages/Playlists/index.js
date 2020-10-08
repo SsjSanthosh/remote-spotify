@@ -37,8 +37,10 @@ function Playlists({ match, ...props }) {
             </p>
           </div>
           <div className="playlist-tracks">
-            {playlist.tracks.items.map((track) => {
-              return <Track item={track} key={track.id} />;
+            {playlist.tracks.items.map((track, idx) => {
+              return (
+                <Track item={track} key={track.id} contextUri={playlist.uri} />
+              );
             })}
           </div>
         </>

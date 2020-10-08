@@ -37,15 +37,18 @@
 }
 
 body::-webkit-scrollbar,
-.sidebar-wrapper::-webkit-scrollbar {
+.sidebar-wrapper::-webkit-scrollbar,
+.page-content::-webkit-scrollbar {
   width: 1rem; /* width of the entire scrollbar */
 }
 body::-webkit-scrollbar-track,
-.sidebar-wrapper::-webkit-scrollbar-track {
-  background: black; /* color of the tracking area */
+.sidebar-wrapper::-webkit-scrollbar-track,
+.page-content::-webkit-scrollbar-track {
+  background-color: black; /* color of the tracking area */
 }
 body::-webkit-scrollbar-thumb,
-.sidebar-wrapper::-webkit-scrollbar-thumb {
+.sidebar-wrapper::-webkit-scrollbar-thumb,
+.page-content::-webkit-scrollbar-thumb {
   background-color: #282828; /* color of the scroll thumb */ /* roundness of the scroll thumb */
   // border: 3px solid orange; /* creates padding around scroll thumb */
 }

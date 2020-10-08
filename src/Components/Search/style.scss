@@ -1,12 +1,17 @@
 .search-wrapper {
-  position: absolute;
+  position: fixed;
+  z-index: 200;
   left: 30%;
   top: 1rem;
   width: 350px;
   > input {
     width: 100%;
+    &:focus {
+      width: 200%;
+    }
+    transition: width 0.3s ease;
     border: 0;
-    padding: 0.5rem 0.8rem;
+    padding: 0.7rem 0.8rem;
     border-radius: 20px;
     &:focus {
       border: 0;

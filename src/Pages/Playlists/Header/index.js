@@ -1,6 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BACKUP_IMAGE } from "utils/constants";
 import React from "react";
+import PlayButton from "Components/Common/PlayButton";
+import FavButton from "Components/Common/FavButton";
+import { displayNumber } from "utils/utils";
 
 function Header({ playlist }) {
   const image = playlist.images.length ? playlist.images[0].url : BACKUP_IMAGE;
@@ -19,9 +22,13 @@ function Header({ playlist }) {
           <span>{playlist.tracks.items.length} songs</span>
         </p>
         <div className="playlist-buttons">
-          <button className="playlist-play-btn fs-1-1">Play</button>
-          Icon
-          <span>{playlist.followers.total} FOLLOWERS</span>
+          <PlayButton type="text" contextUri={playlist.uri} />
+          <FavButton
+            type="playlist"
+            id={playlist.id}
+            className="fav-button-lg"
+          />
+          <span>{displayNumber(playlist.followers.total)} FOLLOWERS</span>
         </div>
       </div>
     </div>
