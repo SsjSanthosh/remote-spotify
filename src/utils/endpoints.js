@@ -59,3 +59,11 @@ export const PLAY_RESOURCE_API_ENDPOINT = `${BASE_API_URL}me/player/play`;
 export const PLAYER_API_ENDPOINT = `${BASE_API_URL}me/player`;
 
 export const PAUSE_RESOURCE_API_ENDPOINT = `${BASE_API_URL}me/player/pause`;
+
+export const NEXT_TRACK_API_ENDPOINT = `${BASE_API_URL}me/player/next`;
+
+export const PREV_TRACK_API_ENDPOINT = `${BASE_API_URL}me/player/previous`;
+
+export const SET_REPEAT_API_ENDPOINT = `${BASE_API_URL}me/player/repeat?state={state}`;
+
+export const SET_SHUFFLE_API_ENDPOINT = `${BASE_API_URL}me/player/shuffle?state={state}`;

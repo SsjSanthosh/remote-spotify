@@ -4,6 +4,7 @@ import React from "react";
 function Control({ options }) {
   return (
     <FontAwesomeIcon
+      onClick={options.onClick}
       icon={options.icon}
       className={options.hoverClass + " text-muted"}
     />

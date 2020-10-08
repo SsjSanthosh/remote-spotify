@@ -23,6 +23,7 @@ import Playlists from "./Pages/Playlists/";
 
 import { setBackendToken, setAuthToken } from "./Redux/Auth/actions";
 import Layout from "Components/Layout";
+import { setPlayer } from "Redux/Player/actions";
 
 const cookie = new Cookie();
 // TODO - Try to find another way to do this, seems like a hack-y solution
@@ -34,7 +35,7 @@ const cookie = new Cookie();
     }`;
   }
 })();
-function App({ setBackendToken, setAuthToken }) {
+function App({ setBackendToken, setAuthToken, setPlayer }) {
   useEffect(() => {
     let setToken = cookie.get(COOKIE_NAME);
     if (!setToken) {
@@ -45,6 +46,7 @@ function App({ setBackendToken, setAuthToken }) {
       let type = setToken.split("=")[0];
       if (type === "auth") {
         setAuthToken(token);
+        setPlayer();
       }
     }
   }, []);
@@ -78,4 +80,5 @@ function App({ setBackendToken, setAuthToken }) {
 export default connect(null, {
   setAuthToken,
   setBackendToken,
+  setPlayer,
 })(App);

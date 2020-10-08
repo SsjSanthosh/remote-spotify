@@ -1,4 +1,5 @@
 import {
+  faPause,
   faPlay,
   faRandom,
   faRedo,
@@ -6,45 +7,67 @@ import {
   faStepForward,
 } from "@fortawesome/free-solid-svg-icons";
 import Progress from "./Progress";
+import {
+  playNextTrack,
+  playPrevTrack,
+  playResource,
+  pauseResource,
+  toggleShuffle,
+  toggleRepeat,
+} from "Redux/Player/actions";
 import React, { useEffect, useState } from "react";
 import Control from "./Control";
 
 import "./style.scss";
 import Track from "./Track";
-function Player() {
+import { connect } from "react-redux";
+function Player({
+  player,
+  playNextTrack,
+  playPrevTrack,
+  playResource,
+  pauseResource,
+  toggleShuffle,
+  toggleRepeat,
+}) {
+  const getToggleState = (player) => {
+    const states = ["track", "context", "off"];
+    const index = states.indexOf(player.repeat_state);
+    return states[(index + 1) % states.length];
+  };
   const PLAYER_CONTROLS = [
     {
       name: "shuffle",
       icon: faRandom,
-      onClick: "toggleShuffle",
+      onClick: () => toggleShuffle(player.shuffle_state ? false : true),
       hoverClass: "hover-accent",
       activeClass: "accent-active",
     },
     {
       name: "prev",
       icon: faStepBackward,
-      onClick: "playPrevSong",
+      onClick: () => playPrevTrack(),
       hoverClass: "hover-white",
       activeClass: "",
     },
     {
       name: "play",
-      icon: faPlay,
-      onClick: "togglePlay",
+      icon: player.is_playing ? faPause : faPlay,
+      onClick: player.is_playing ? () => pauseResource() : () => playResource(),
       hoverClass: "hover-white",
       activeClass: "",
     },
     {
       name: "next",
       icon: faStepForward,
-      onClick: "playNextSong",
+      onClick: () => playNextTrack(),
       hoverClass: "hover-white",
       activeClass: "",
     },
     {
       name: "repeat",
       icon: faRedo,
-      onClick: "toggleRepeat",
+      onClick: () => toggleRepeat(getToggleState(player)),
       hoverClass: "hover-accent",
       activeClass: "active-accent",
     },
@@ -67,4 +90,15 @@ function Player() {
   );
 }
 
-export default Player;
+const mapStateToProps = ({ player }) => {
+  return { player: player.player };
+};
+
+export default connect(mapStateToProps, {
+  playResource,
+  pauseResource,
+  playNextTrack,
+  playPrevTrack,
+  toggleShuffle,
+  toggleRepeat,
+})(Player);

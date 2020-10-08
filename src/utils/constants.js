@@ -15,8 +15,13 @@ export const FETCH_ACTIONS = {
 };
 
 export const PLAYER_ACTIONS = {
+  SET_PLAYER: "SET_PLAYER",
   PLAY_RESOURCE: "PLAY_RESOURCE",
   PAUSE_RESOURCE: "PAUSE_RESOURCE",
+  NEXT_TRACK: "NEXT_TRACK",
+  PREV_TRACK: "PREV_TRACK",
+  SET_REPEAT: "SET_REPEAT",
+  SET_SHUFFLE: "SET_SHUFFLE",
 };
 export const SCOPES = [
   "user-read-playback-state",
