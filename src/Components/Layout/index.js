@@ -6,16 +6,18 @@ import Sidebar from "../Sidebar";
 
 import "./style.scss";
 import Navigation from "Components/Common/Navigation";
-function Layout({ token, history, ...props }) {
+import UserPill from "Components/UserPill";
+function Layout({ token, loggedIn, history, ...props }) {
   return (
     <div className="layout">
       <Search />
       <Navigation />
+      {loggedIn && <UserPill />}
       <div className="layout-page">
         <Sidebar />
         {props.children}
       </div>
-      <Player />
+      {loggedIn && <Player />}
     </div>
   );
 }
@@ -23,6 +25,7 @@ function Layout({ token, history, ...props }) {
 const mapStateToProps = ({ auth }) => {
   return {
     token: auth.token,
+    loggedIn: auth.loggedIn,
   };
 };
 

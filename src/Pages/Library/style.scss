@@ -1,0 +1,42 @@
+.library-page-wrapper {
+  .logged-out-div {
+    position: absolute;
+    width: 40%;
+    height: 400px;
+    top: 45%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .logged-out-icon {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    .login-btn {
+      padding: 1rem 2.5rem;
+    }
+  }
+  .library-flex {
+    display: flex;
+    justify-content: space-evenly;
+    .recently-played-wrapper {
+      width: 40%;
+      margin-right: 2rem;
+    }
+    .saved-albums-wrapper {
+      width: 40%;
+    }
+  }
+  .library-playlist-title {
+    margin-left: 5rem;
+    width: 90%;
+  }
+  .library-playlists {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+  }
+}

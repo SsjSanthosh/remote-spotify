@@ -24,21 +24,6 @@
 
     .artist-tracks-wrapper {
       width: 60%;
-      .artist-track {
-        display: flex;
-        align-items: center;
-        margin: 0.5rem 0;
-        width: 100%;
-        > img {
-          width: 60px;
-          height: 60px;
-          justify-self: flex-start;
-          margin-right: 3rem;
-        }
-        .track-name {
-          width: 60%;
-        }
-      }
     }
     .related-wrapper {
       width: 30%;

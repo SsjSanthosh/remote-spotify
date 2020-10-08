@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header({ album }) {
   return (
@@ -14,9 +15,21 @@ function Header({ album }) {
           <span className="album-artists">
             {album.artists.map((artist, idx) => {
               if (idx === album.artists.length - 1) {
-                return artist.name;
+                return (
+                  <Link
+                    className="link hover-white"
+                    to={`/artist/${artist.id}`}
+                    key={artist.id}
+                  >
+                    {artist.name}
+                  </Link>
+                );
               }
-              return artist.name + ", ";
+              return (
+                <Link className="link hover-white" to={`/artist/${artist.id}`}>
+                  {artist.name + ","}
+                </Link>
+              );
             })}
           </span>
         </span>

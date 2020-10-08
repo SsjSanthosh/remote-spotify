@@ -36,11 +36,9 @@ function Search({ match, ...props }) {
   };
 
   return (
-    <Layout>
-      <div className="page-content search-page-wrapper">
-        {results.tracks && renderSearchItems()}
-      </div>
-    </Layout>
+    <div className="page-content search-page-wrapper">
+      {results.tracks && renderSearchItems()}
+    </div>
   );
 }
 

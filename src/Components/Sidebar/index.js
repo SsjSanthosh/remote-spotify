@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navlinks from "./Navlinks";
 
 import "./style.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
-function Sidebar() {
+import { connect } from "react-redux";
+import Playlists from "./Playlists";
+const Sidebar = React.memo(function Sidebar({ loggedIn, ...props }) {
   return (
     <div className="sidebar-wrapper">
       <div className="sidebar-brand">
@@ -13,9 +15,19 @@ function Sidebar() {
       </div>
       <div className="sidebar-content">
         <Navlinks />
+        <p className="highlight">PLAYLISTS</p>
+        {loggedIn && <Playlists />}
+        {!loggedIn && (
+          <p className="no-highlight fw-l">
+            Please login to see your playlists here.
+          </p>
+        )}
       </div>
     </div>
   );
-}
+});
 
-export default Sidebar;
+const mapStateToProps = ({ auth }) => {
+  return { loggedIn: auth.loggedIn };
+};
+export default React.memo(connect(mapStateToProps)(Sidebar));

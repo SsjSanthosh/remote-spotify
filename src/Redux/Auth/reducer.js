@@ -3,26 +3,24 @@ import { setTokenLocally } from "../../utils";
 
 const initialState = {
   token: null,
-  refreshToken: null,
-  username: null,
-  image: null,
-  webPlayer: null,
+  user: null,
   loggedIn: false,
 };
 
 const authReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case AUTH_ACTIONS.SET_ACCESS_TOKEN:
+    case AUTH_ACTIONS.SET_AUTH_TOKEN:
       return {
         ...state,
         token: payload.token,
-        username: payload.username,
-        image: payload.images[0].url,
-        webPlayer: payload.external_urls.spotify,
+        user: payload.user,
+        loggedIn: true,
       };
     case AUTH_ACTIONS.SET_BACKEND_TOKEN:
       return { ...state, token: payload };
+    case AUTH_ACTIONS.LOGOUT:
+      return { initialState };
     default:
       return state;
   }

@@ -1,8 +1,10 @@
 const SCOPES = [
   "user-read-playback-state",
   "playlist-read-collaborative",
+  "playlist-read-private",
   "user-modify-playback-state",
-  // "user-read-private",
+  "playlist-read-collaborative",
+  "user-read-private",
   "playlist-modify-public",
   "user-library-modify",
   "user-top-read",
@@ -45,3 +47,15 @@ export const RELATED_ARTISTS_API_ENDPOINT = `${BASE_API_URL}artists/{id}/related
 export const ARTIST_ALBUM_API_ENDPOINT = `${BASE_API_URL}artists/{id}/albums`;
 
 export const ARTIST_TOP_TRACKS_API_ENDPOINT = `${BASE_API_URL}artists/{id}/top-tracks?market=IN`;
+
+export const USER_PLAYLISTS_API_ENDPOINT = `${BASE_API_URL}me/playlists?limit=50`;
+
+export const USER_RECENTLY_PLAYED_API_ENDPOINT = `${BASE_API_URL}me/player/recently-played?limit=10`;
+
+export const USER_ALBUMS_API_ENDPOINT = `${BASE_API_URL}me/albums?limit=8`;
+
+export const PLAY_RESOURCE_API_ENDPOINT = `${BASE_API_URL}me/player/play`;
+
+export const PLAYER_API_ENDPOINT = `${BASE_API_URL}me/player`;
+
+export const PAUSE_RESOURCE_API_ENDPOINT = `${BASE_API_URL}me/player/pause`;

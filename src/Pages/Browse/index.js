@@ -16,22 +16,20 @@ function Browse({ history }) {
     );
   }, []);
   return (
-    <Layout>
-      <div className="page page-content browse-page-wrapper">
-        <p className="page-title highlight">Browse</p>
-        <p className="page-content-title highlight fs-1-3 bb-1-w pb8">
-          Genres & Moods
-        </p>
-        <div className="browse-page-content-wrapper">
-          {!categories.items && <p className="fs-1-5">Loading</p>}
-          {categories.items &&
-            categories.items &&
-            categories.items.map((item) => {
-              return <Category category={item} key={item.name} />;
-            })}
-        </div>
+    <div className="page page-content browse-page-wrapper">
+      <p className="page-title highlight">Browse</p>
+      <p className="page-content-title highlight fs-1-3 bb-1-w pb8">
+        Genres & Moods
+      </p>
+      <div className="browse-page-content-wrapper">
+        {!categories.items && <p className="fs-1-5">Loading</p>}
+        {categories.items &&
+          categories.items &&
+          categories.items.map((item) => {
+            return <Category category={item} key={item.name} />;
+          })}
       </div>
-    </Layout>
+    </div>
   );
 }
 

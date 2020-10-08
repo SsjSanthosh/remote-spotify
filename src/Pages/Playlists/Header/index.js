@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BACKUP_IMAGE } from "utils/constants";
 import React from "react";
 
 function Header({ playlist }) {
+  const image = playlist.images.length ? playlist.images[0].url : BACKUP_IMAGE;
   return (
     <div className="playlists-page-header">
       <div className="playlist-cover">
-        <img src={playlist.images[0].url} alt={playlist.name} />
+        <img src={image} alt={playlist.name} />
       </div>
       <div className="playlist-info">
         <p className="highlight fw-l">PLAYLIST</p>

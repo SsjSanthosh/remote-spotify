@@ -14,17 +14,15 @@ function Genre({ match, ...props }) {
   }, [match]);
 
   return (
-    <Layout>
-      <div className="page-content genre-page-content-wrapper">
-        <p className="page-title">{slugToName(match.params.type)}</p>
-        <div className="genre-playlists">
-          {genres.playlists &&
-            genres.playlists.items.map((playlist) => {
-              return <Playlist playlist={playlist} />;
-            })}
-        </div>
+    <div className="page-content genre-page-content-wrapper">
+      <p className="page-title">{slugToName(match.params.type)}</p>
+      <div className="genre-playlists">
+        {genres.playlists &&
+          genres.playlists.items.map((playlist) => {
+            return <Playlist playlist={playlist} />;
+          })}
       </div>
-    </Layout>
+    </div>
   );
 }
 

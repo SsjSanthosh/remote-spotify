@@ -37,20 +37,17 @@ function Artist({ match, ...props }) {
     ).then((res) => setTracks(res.data));
   }, [match]);
 
-  console.log(albums);
   return (
-    <Layout>
-      <div className="page-content artist-page-wrapper">
-        {artist.name && <Header artist={artist} />}
-        <div className="artist-flex">
-          {tracks.tracks && <TopTracks tracks={tracks.tracks.slice(0, 5)} />}
-          {relatedArtists.artists && (
-            <Related artists={relatedArtists.artists.slice(0, 5)} />
-          )}
-        </div>
-        {albums.items && <Albums albums={albums.items.slice(0, 12)} />}
+    <div className="page-content artist-page-wrapper">
+      {artist.name && <Header artist={artist} />}
+      <div className="artist-flex">
+        {tracks.tracks && <TopTracks tracks={tracks.tracks.slice(0, 5)} />}
+        {relatedArtists.artists && (
+          <Related artists={relatedArtists.artists.slice(0, 5)} />
+        )}
       </div>
-    </Layout>
+      {albums.items && <Albums albums={albums.items.slice(0, 12)} />}
+    </div>
   );
 }
 

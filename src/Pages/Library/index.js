@@ -1,17 +1,29 @@
-import Layout from "../../Components/Layout";
-
 import React from "react";
-import Navigation from "Components/Common/Navigation";
+import { connect } from "react-redux";
+import LoggedOut from "./LoggedOut";
 
-function Library(props) {
+import "./style.scss";
+import RecentlyPlayed from "./RecentlyPlayed";
+import SavedAlbums from "./SavedAlbums";
+import UserPlaylists from "./UserPlaylists";
+function Library({ loggedIn, ...props }) {
   return (
-    <Layout>
-      <Navigation history={props.history} />
-      <div className="page page-content library-page-wrapper">
-        This is the library page
-      </div>
-    </Layout>
+    <div className="page page-content library-page-wrapper">
+      {!loggedIn && <LoggedOut />}
+      {loggedIn && (
+        <>
+          <div className="library-flex">
+            <RecentlyPlayed />
+            <SavedAlbums />
+          </div>
+          <UserPlaylists />
+        </>
+      )}
+    </div>
   );
 }
 
-export default Library;
+export const mapStateToProps = ({ auth }) => {
+  return { loggedIn: auth.loggedIn };
+};
+export default connect(mapStateToProps)(Library);

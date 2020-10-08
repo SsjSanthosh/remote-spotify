@@ -6,6 +6,7 @@ export const SPOTIFY_SCOPES = [];
 export const AUTH_ACTIONS = {
   SET_AUTH_TOKEN: "SET_AUTH_TOKEN",
   SET_BACKEND_TOKEN: "SET_BACKEND_TOKEN",
+  LOGOUT: "LOGOUT",
 };
 
 export const FETCH_ACTIONS = {
@@ -13,10 +14,16 @@ export const FETCH_ACTIONS = {
   SET_LOADING: "SET_LOADING",
 };
 
+export const PLAYER_ACTIONS = {
+  PLAY_RESOURCE: "PLAY_RESOURCE",
+  PAUSE_RESOURCE: "PAUSE_RESOURCE",
+};
 export const SCOPES = [
   "user-read-playback-state",
   "playlist-read-collaborative",
+  "playlist-read-private",
   "user-modify-playback-state",
+  "playlist-read-collaborative",
   // "user-read-private",
   "playlist-modify-public",
   "user-library-modify",
@@ -79,4 +86,5 @@ export const NAV_LINKS = {
 // };
 
 export const COOKIE_NAME = "remoteSpotifyCookie";
-//
+
+export const BACKUP_IMAGE = `https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2?v=1.0`;

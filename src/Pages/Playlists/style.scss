@@ -29,38 +29,44 @@
   }
   .tracklist-header {
     display: flex;
-    margin-left: 5rem;
+
+    width: 90%;
+    margin: 0 auto;
     margin-top: 2rem;
     .title {
-      width: 35%;
+      width: 45%;
     }
     .artists {
-      width: 20%;
-    }
-    .album {
       width: 25%;
     }
+    .album {
+      width: 30%;
+    }
     .release {
-      width: 15%;
+      width: 20%;
     }
   }
-  .track-wrapper {
-    width: 100%;
-    .track {
+  .playlist-tracks {
+    width: 90%;
+    margin: 0 auto;
+    .track-wrapper {
       width: 100%;
-      .track-name {
-        min-width: 35%;
+      .track {
+        width: 100%;
+        .track-name {
+          min-width: 35%;
+        }
+        .track-artists {
+          width: 20%;
+        }
+        .track-album {
+          width: 30%;
+        }
+        .track-release {
+          width: 20%;
+        }
+        // justify-content: space-evenly;
       }
-      .track-artists {
-        width: 20%;
-      }
-      .track-album {
-        width: 30%;
-      }
-      .track-release {
-        width: 20%;
-      }
-      // justify-content: space-evenly;
     }
   }
 }

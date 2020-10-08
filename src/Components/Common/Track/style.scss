@@ -1,11 +1,11 @@
 .track-wrapper {
   // width: 80%;
-  margin: auto;
 
   color: #fff;
   padding: 1rem 0;
   justify-content: space-between;
-  max-width: 70vw;
+  width: 100%;
+  // max-width: 70vw;
   border-bottom: 2px solid #282828;
   .track {
     display: flex;

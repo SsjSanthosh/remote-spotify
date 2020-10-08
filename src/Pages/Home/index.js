@@ -7,11 +7,9 @@ import "./style.scss";
 import User from "./User";
 function Home({ loggedIn, ...props }) {
   return (
-    <Layout>
-      <div className="page-content home-page-wrapper">
-        {!loggedIn ? <Generic /> : <User />}
-      </div>
-    </Layout>
+    <div className="page-content home-page-wrapper">
+      <Generic />
+    </div>
   );
 }
 

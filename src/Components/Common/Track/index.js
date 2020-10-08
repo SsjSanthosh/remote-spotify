@@ -9,9 +9,14 @@ function Track({ item }) {
     <div className="track-wrapper hover-item cursor-pointer">
       <div className="track ">
         <p className="track-name">{track.name}</p>
-        {track.album && (
-          <p className="track-artists">{track.artists[0].name}</p>
+        {!window.location.href.includes("album") && (
+          <p className="track-artists link ">
+            <Link to={`/artist/${track.artists[0].id}`}>
+              {track.artists[0].name}
+            </Link>
+          </p>
         )}
+
         {track.album && (
           <p className="track-album link">
             <Link to={`/album/${track.album.id}`}>{track.album.name}</Link>

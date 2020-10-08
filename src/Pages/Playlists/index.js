@@ -16,35 +16,34 @@ function Playlists({ match, ...props }) {
     getDataFromEndpoint(
       PLAYLIST_API_ENDPOINT.replace("{id}", match.params.id)
     ).then((res) => {
-      console.log("heres the data", res.data);
       setPlaylist(res.data);
     });
-  }, []);
+  }, [match]);
 
   return (
-    <Layout>
-      <div className="page page-content playlists-page-wrapper">
-        {playlist.tracks && (
-          <>
-            <Header playlist={playlist} />
-            <div className="tracklist-header">
-              <p className="title">TITLE</p>
-              <p className="artists">ARTISTS</p>
-              <p className="album">ALBUM</p>
-              <p className="release">
-                <FontAwesomeIcon icon={faCalendar} />
-              </p>
-              <p className="duration">
-                <FontAwesomeIcon icon={faClock} />
-              </p>
-            </div>
+    <div className="page page-content playlists-page-wrapper">
+      {playlist.tracks && (
+        <>
+          <Header playlist={playlist} />
+          <div className="tracklist-header">
+            <p className="title">TITLE</p>
+            <p className="artists">ARTISTS</p>
+            <p className="album">ALBUM</p>
+            <p className="release">
+              <FontAwesomeIcon icon={faCalendar} />
+            </p>
+            <p className="duration">
+              <FontAwesomeIcon icon={faClock} />
+            </p>
+          </div>
+          <div className="playlist-tracks">
             {playlist.tracks.items.map((track) => {
-              return <Track item={track} />;
+              return <Track item={track} key={track.id} />;
             })}
-          </>
-        )}
-      </div>
-    </Layout>
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 

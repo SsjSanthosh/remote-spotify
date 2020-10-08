@@ -5,12 +5,16 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import authReducer from "./Auth/reducer";
 import dataReducer from "./Data/reducer";
-
+import playerReducer from "./Player/reducer";
 const initialState = {};
 
 const middlewares = [thunk];
 
-const rootReducer = combineReducers({ auth: authReducer, data: dataReducer });
+const rootReducer = combineReducers({
+  auth: authReducer,
+  data: dataReducer,
+  player: playerReducer,
+});
 
 const store = createStore(
   rootReducer,

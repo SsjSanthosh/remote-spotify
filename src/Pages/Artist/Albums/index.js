@@ -8,7 +8,7 @@ function Albums({ albums }) {
       <div className="artist-albums">
         {albums.map((album) => {
           return (
-            <div className="artist-album cursor-pointer">
+            <div className="artist-album cursor-pointer" key={album.id}>
               <Link to={`/album/${album.id}`}>
                 <img
                   src={album.images[0].url}

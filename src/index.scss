@@ -36,5 +36,16 @@
   // color: #fff;
 }
 
-code {
+body::-webkit-scrollbar,
+.sidebar-wrapper::-webkit-scrollbar {
+  width: 1rem; /* width of the entire scrollbar */
+}
+body::-webkit-scrollbar-track,
+.sidebar-wrapper::-webkit-scrollbar-track {
+  background: black; /* color of the tracking area */
+}
+body::-webkit-scrollbar-thumb,
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+  background-color: #282828; /* color of the scroll thumb */ /* roundness of the scroll thumb */
+  // border: 3px solid orange; /* creates padding around scroll thumb */
 }

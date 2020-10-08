@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { BACKUP_IMAGE } from "utils/constants";
 export const slugToName = (slug) => {
   return slug.split("_").join(" ");
 };
@@ -24,4 +24,10 @@ export const getLinkFromType = (type, item) => {
 
 export const displayNumber = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+export const getImageFromObject = (obj) => {
+  if (obj.type === "user") {
+    return obj.images.length ? obj.images[0].url : BACKUP_IMAGE;
+  }
 };

@@ -23,7 +23,7 @@ function Generic() {
           </p>
           <div className="featured-playlists">
             {featuredPlaylists.playlists.items.map((playlist) => (
-              <Playlist playlist={playlist} />
+              <Playlist playlist={playlist} key={playlist.id} />
             ))}
           </div>
         </div>

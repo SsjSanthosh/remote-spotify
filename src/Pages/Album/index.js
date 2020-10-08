@@ -16,24 +16,22 @@ function Album({ match, ...props }) {
     ).then((res) => setAlbum(res.data));
   }, []);
   return (
-    <Layout>
-      <div className="page-content album-page-wrapper">
-        {album.tracks && (
-          <>
-            <Header album={album} />
-            <div className="tracklist-header">
-              <p className="title">TITLE</p>
-              <p className="duration">
-                <FontAwesomeIcon icon={faClock} className="duration-icon" />
-              </p>
-            </div>
-            {album.tracks.items.map((track) => (
-              <Track item={track} />
-            ))}
-          </>
-        )}
-      </div>
-    </Layout>
+    <div className="page-content album-page-wrapper">
+      {album.tracks && (
+        <>
+          <Header album={album} />
+          <div className="tracklist-header">
+            <p className="title">TITLE</p>
+            <p className="duration">
+              <FontAwesomeIcon icon={faClock} className="duration-icon" />
+            </p>
+          </div>
+          {album.tracks.items.map((track) => (
+            <Track item={track} key={track.id} />
+          ))}
+        </>
+      )}
+    </div>
   );
 }
 

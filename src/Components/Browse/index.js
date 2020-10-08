@@ -3,10 +3,16 @@ import React, { useState, useEffect } from "react";
 import { If, Then } from "react-if";
 import { connect } from "react-redux";
 import { getBrowseCategories } from "Redux/Data/actions";
+import { getDataFromEndpoint } from "utils/utils";
+import { BROWSE_CATEGORIES_API_ENDPOINT } from "utils/endpoints";
 
 import "./style.scss";
-function Categories({ categories, getBrowseCategories, loading, ...props }) {
+function Categories({ loading, ...props }) {
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
+    getDataFromEndpoint(BROWSE_CATEGORIES_API_ENDPOINT).then((res) =>
+      setCategories(res.data)
+    );
     // getBrowseCategories();
   }, []);
   return (
@@ -15,9 +21,7 @@ function Categories({ categories, getBrowseCategories, loading, ...props }) {
         Genres & Moods
       </p>
       <div className="browse-page-content-wrapper">
-        {loading && <p className="fs-1-5">Loading</p>}
-        {!loading &&
-          categories &&
+        {categories &&
           categories.items.map((item) => {
             return <Category category={item} />;
           })}

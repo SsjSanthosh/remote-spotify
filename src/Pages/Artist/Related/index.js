@@ -8,7 +8,10 @@ function Related({ artists }) {
       <div className="related-artists">
         {artists.map((artist) => {
           return (
-            <div className="related-artist hover-item cursor-pointer">
+            <div
+              className="related-artist hover-item cursor-pointer"
+              key={artist.id}
+            >
               <img
                 className="related-artist-image"
                 src={artist.images[0].url}

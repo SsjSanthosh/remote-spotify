@@ -1,4 +1,6 @@
 .sidebar-wrapper {
+  padding: 1rem;
+  padding-bottom: 15vh;
   .sidebar-brand {
     padding: 0.3em;
     display: flex;
@@ -12,6 +14,11 @@
     }
     .sidebar-name {
       font-size: 2rem;
+    }
+  }
+  .sidebar-playlists {
+    .sidebar-playlist {
+      padding: 0.5rem 0;
     }
   }
 }
