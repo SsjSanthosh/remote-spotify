@@ -33,8 +33,7 @@ const cookie = new Cookie();
   if (setToken) {
     axios.defaults.headers.common["Authorization"] = `Bearer ${
       setToken.split("=")[1]
-    }`;
-  }
+    }`;}
 })();
 function App({ setBackendToken, setAuthToken, setPlayer }) {
   useEffect(() => {

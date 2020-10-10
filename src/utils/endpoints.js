@@ -75,3 +75,7 @@ export const SAVE_TRACK_API_ENDPOINT = `${BASE_API_URL}me/tracks?ids={ids}`;
 export const SAVE_ALBUM_API_ENDPOINT = `${BASE_API_URL}me/albums?ids={ids}`;
 
 export const FOLLOW_PLAYLIST_API_ENDPOINT = `${BASE_API_URL}playlists/{id}/followers`;
+
+export const SEEK_TRACK_API_ENDPOINT = `${BASE_API_URL}me/player/seek?position_ms={position}`;
+
+export const SET_VOLUME_API_ENDPOINT = `${BASE_API_URL}me/player/volume?volume_percent={volume}`;

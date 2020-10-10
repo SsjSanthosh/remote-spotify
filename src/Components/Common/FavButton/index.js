@@ -11,7 +11,17 @@ import { faHeart as faSolid } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 function FavButton({ type, id, className }) {
-  const [saved, setSaved] = useState(false);
+  const getInitialState = () => {
+    // refactor this, playlist named library will throw this off
+    if (
+      window.location.href.includes("library") ||
+      window.location.href.includes("liked-songs")
+    ) {
+      return true;
+    }
+    return false;
+  };
+  const [saved, setSaved] = useState(getInitialState());
   const getEndpointFromType = () => {
     switch (type) {
       case "album":

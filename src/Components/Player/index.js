@@ -5,6 +5,9 @@ import {
   faRedo,
   faStepBackward,
   faStepForward,
+  faVolumeDown as volumeLow,
+  faVolumeOff as volumeOff,
+  faVolumeUp as volumeHigh,
 } from "@fortawesome/free-solid-svg-icons";
 import Progress from "./Progress";
 import {
@@ -14,6 +17,9 @@ import {
   pauseResource,
   toggleShuffle,
   toggleRepeat,
+  setPlayer,
+  seekTrack,
+  setVolume,
 } from "Redux/Player/actions";
 import React, { useEffect, useState } from "react";
 import Control from "./Control";
@@ -21,6 +27,11 @@ import Control from "./Control";
 import "./style.scss";
 import Track from "./Track";
 import { connect } from "react-redux";
+import { millisToDuration } from "utils/utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+let interval;
+let timeout;
 function Player({
   player,
   playNextTrack,
@@ -29,7 +40,50 @@ function Player({
   pauseResource,
   toggleShuffle,
   toggleRepeat,
+  setPlayer,
+  seekTrack,
+  setVolume,
 }) {
+  const [trackProgress, setTrackProgress] = useState(null);
+  const [playerVolume, setPlayerVolume] = useState(null);
+
+  useEffect(() => {
+    if (player.item || player.context) {
+      setTrackProgress(player.progress_ms);
+    }
+    if (player.device) {
+      console.log('this what we got',player.device.volume_percent)
+      setPlayerVolume(player.device.volume_percent);
+    }
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [player]);
+
+  useEffect(() => {
+    interval = setInterval(() => {
+      setTrackProgress((trackProgress) =>
+        trackProgress + 1000 > player.item.duration_ms
+          ? player.item.duration_ms
+          : trackProgress + 1000
+      );
+    }, 1000);
+  }, [player]);
+  useEffect(() => {
+    if (!player.is_playing) {
+      clearTimeout(timeout);
+      clearInterval(interval);
+    }
+    if (player.item && player.is_playing) {
+      timeout = setTimeout(
+        () => setPlayer(),
+        player.item && player.item.duration_ms - player.progress_ms
+      );
+    }
+  }, [player, setPlayer]);
+
+  useEffect(() => {}, [player, trackProgress]);
   const getToggleState = (player) => {
     const states = ["track", "context", "off"];
     const index = states.indexOf(player.repeat_state);
@@ -72,7 +126,17 @@ function Player({
       activeClass: "active-accent",
     },
   ];
-  return player.item ? (
+
+  const handleSeek = (perc) => {
+    const seek_ms = Math.floor(player.item.duration_ms * (perc / 100));
+    seekTrack(seek_ms);
+  };
+
+  const handleVolumeChange = (perc) => {
+    setVolume(Math.floor(perc));
+  };
+
+  return player.item || player.context ? (
     <div className="player-wrapper">
       <Track track={player && (player.item || player.context)} />
       <div className="player-controls">
@@ -82,11 +146,23 @@ function Player({
           })}
         </div>
         <div className="player-progressbar">
-          <Progress bgcolor="green" completed={56} />
+          <span className="player-current">
+            {millisToDuration(trackProgress)}
+          </span>
+          <Progress
+            completed={Math.floor(
+              (trackProgress / player.item.duration_ms) * 100
+            )}
+            handleSeek={handleSeek}
+          />
+          <span className="player-total">
+            {millisToDuration(player.item.duration_ms)}
+          </span>
         </div>
       </div>
       <div className="player-devices-volume">
-        <span>Hello!</span>
+        <FontAwesomeIcon icon={playerVolume > 0 ? (playerVolume > 50 ? volumeHigh : volumeLow):volumeOff}/>
+        <Progress completed={playerVolume} handleSeek={handleVolumeChange} />
       </div>
     </div>
   ) : (
@@ -105,4 +181,7 @@ export default connect(mapStateToProps, {
   playPrevTrack,
   toggleShuffle,
   toggleRepeat,
+  setPlayer,
+  setVolume,
+  seekTrack,
 })(Player);

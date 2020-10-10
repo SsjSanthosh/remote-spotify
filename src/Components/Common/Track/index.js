@@ -8,15 +8,12 @@ import PlayButton from "../PlayButton";
 import "./style.scss";
 function Track({ item, contextUri, idx = null }) {
   const track = item.track ? item.track : item;
-  console.log(track);
   return (
     <div className="track-wrapper hover-item ">
       <div className="track ">
         <p className="track-name">
           <PlayButton type="icon" uri={track.uri} contextUri={contextUri} />
-          {!window.location.href.includes("liked-songs") && (
-            <FavButton type="track" id={track.id} className="fav-button-md" />
-          )}
+          <FavButton type="track" id={track.id} className="fav-button-md" />
           {track.name}
         </p>
         {!window.location.href.includes("album") && (

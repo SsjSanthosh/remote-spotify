@@ -6,11 +6,13 @@ import {
   PLAY_RESOURCE_API_ENDPOINT,
   PREV_TRACK_API_ENDPOINT,
   SAVE_TRACK_API_ENDPOINT,
+  SEEK_TRACK_API_ENDPOINT,
   SET_REPEAT_API_ENDPOINT,
   SET_SHUFFLE_API_ENDPOINT,
 } from "utils/endpoints";
 
 import { PLAYER_ACTIONS } from "utils/constants";
+import { SET_VOLUME_API_ENDPOINT } from "./../../utils/endpoints";
 
 export const setPlayer = () => async (dispatch) => {
   const player = await axios.get(PLAYER_API_ENDPOINT);
@@ -77,4 +79,25 @@ export const saveTrack = (ids) => async (dispatch) => {
     SAVE_TRACK_API_ENDPOINT.replace("{ids}", ids.split(","))
   );
   dispatch({ type: PLAYER_ACTIONS.SAVE_TRACK });
+};
+
+export const seekTrack = (position) => async (dispatch) => {
+  const seek = await axios.put(
+    SEEK_TRACK_API_ENDPOINT.replace("{position}", position)
+  );
+  const player = await axios.get(PLAYER_API_ENDPOINT);
+  dispatch({ type: PLAYER_ACTIONS.SEEK_TRACK, payload: player.data });
+};
+
+export const setVolume = (perc) => async (dispatch) => {
+  const volume = await axios.put(
+    SET_VOLUME_API_ENDPOINT.replace("{volume}", perc)
+  );
+  const player = await axios.get(PLAYER_API_ENDPOINT+`?timestamp=${new Date().getTime()}`);
+  console.log(player.data.device.volume_percent,'got this');
+  dispatch({
+    type: PLAYER_ACTIONS.SET_VOLUME,
+    payload: player.data,
+  });
+
 };

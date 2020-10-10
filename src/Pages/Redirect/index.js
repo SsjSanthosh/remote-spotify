@@ -14,11 +14,9 @@ function Redirect({ setAuthToken, ...props }) {
   }, [setAuthToken]);
 
   return (
-    <Layout>
-      <div className="page-content redirect-page-wrapper">
-        this is the redirect page!
-      </div>
-    </Layout>
+    <div className="page-content redirect-page-wrapper">
+      this is the redirect page!
+    </div>
   );
 }
 

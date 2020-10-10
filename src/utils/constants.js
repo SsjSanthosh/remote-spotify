@@ -23,6 +23,8 @@ export const PLAYER_ACTIONS = {
   SET_REPEAT: "SET_REPEAT",
   SET_SHUFFLE: "SET_SHUFFLE",
   SAVE_TRACK: "SAVE_TRACK",
+  SEEK_TRACK: "SEEK_TRACK",
+  SET_VOLUME: "SET_VOLUME",
 };
 export const SCOPES = [
   "user-read-playback-state",
