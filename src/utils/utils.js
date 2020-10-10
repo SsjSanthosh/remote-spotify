@@ -58,3 +58,11 @@ export const getArtistsString = (artists) => {
     );
   });
 };
+
+
+export const trimString = (str,lim)=>{
+  if(str.length < lim){
+    return str
+  }
+  else return str.slice(0,lim) + '...'
+}

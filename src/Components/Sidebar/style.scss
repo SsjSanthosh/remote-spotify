@@ -1,29 +1,59 @@
 .sidebar-wrapper {
-  padding: 1rem;
-  padding-bottom: 15vh;
+  padding-bottom: 10vh;
+  @media only screen and (max-width: 576px) {
+    padding: 0;
+    z-index: 9;
+    background-color: black !important;
+    .sidebar-user-content {
+      display: none;
+    }
+    .sidebar-content {
+      display: flex;
+
+      .sidebar-navlinks-wrapper {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+        .navlink {
+          padding: 1rem;
+        }
+        .active {
+          border-left: 0;
+          border-bottom: 5px solid var(--accent-color);
+          color: var(--accent-color);
+        }
+      }
+    }
+  }
   .sidebar-brand {
     padding: 0.3em;
     display: flex;
     justify-content: left;
     margin-top: 1rem;
     align-items: center;
-
     .sidebar-icon {
       font-size: 3.2rem;
       margin-right: 1rem;
+      @media only screen and (max-width: 576px) {
+        font-size: 1.2rem;
+        text-align: center;
+      }
     }
     .sidebar-name {
       font-size: 2rem;
+      @media only screen and (max-width: 576px) {
+        font-size: 1.2rem;
+      }
     }
   }
   .liked-songs {
     padding: 1rem;
-    padding-left: 0;
     .liked-songs-icon {
       margin-right: 1rem;
     }
   }
   .sidebar-playlists {
+    padding: 1rem;
     .sidebar-playlist {
       padding: 0.5rem 0;
     }

@@ -2,10 +2,16 @@
   margin: 1em;
   position: relative;
   cursor: pointer;
-
+  @media only screen and (max-width: 576px) {
+    margin: 0.5em;
+  }
   .category-image {
     max-width: 200px;
     max-height: 200px;
+    @media only screen and (max-width: 976px) {
+      height: 150px;
+      width: 150px;
+    }
     > img {
       width: 100%;
       height: 100%;

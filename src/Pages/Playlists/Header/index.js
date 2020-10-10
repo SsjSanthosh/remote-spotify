@@ -18,7 +18,7 @@ function Header({ playlist }) {
         <p className="fs-0-8">{playlist.description.slice(0, 90) + "...."}</p>
         <p className="fs-0-8 mb8">
           Created by{" "}
-          <span className="highlight">{playlist.owner.display_name}. </span>
+          <a href={playlist.owner.external_urls.spotify} rel="noopener noreferrer" target="_blank"><span className="highlight">{playlist.owner.display_name}. </span></a>
           <span>{playlist.tracks.items.length} songs</span>
         </p>
         <div className="playlist-buttons">

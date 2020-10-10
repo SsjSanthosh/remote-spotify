@@ -1,6 +1,10 @@
 .featured-playlists-wrapper {
+  .featured-playlists-title {
+    margin-left: 3rem;
+  }
   .featured-playlists {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }

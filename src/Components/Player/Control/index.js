@@ -6,7 +6,7 @@ function Control({ options }) {
     <FontAwesomeIcon
       onClick={options.onClick}
       icon={options.icon}
-      className={options.hoverClass + " text-muted"}
+      className={options.hoverClass + " " + options.activeClass + " text-muted"}
     />
   );
 }

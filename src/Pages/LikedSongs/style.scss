@@ -35,6 +35,9 @@
   //   }
   .tracklist-header {
     display: flex;
+    @media only screen and (max-width: 1076px) {
+      display: none;
+    }
 
     width: 90%;
     margin: 0 auto;
@@ -49,7 +52,7 @@
       width: 30%;
     }
     .release {
-      width: 20%;
+      display: none;
     }
   }
   .liked-songs {
@@ -59,8 +62,32 @@
       width: 100%;
       .track {
         width: 100%;
+        @media only screen and (max-width: 1076px) {
+          flex-direction: column;
+          align-items: left;
+        }
         .track-name {
-          min-width: 35%;
+          width: 35%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          @media only screen and (max-width: 1076px) {
+            width: 100%;
+            flex-direction: row-reverse;
+            margin: 0;
+            padding: 0;
+            justify-content: space-between;
+            > span {
+              // margin-left: 57px;
+              justify-self: flex-start;
+            }
+            // justify-content: space-between;
+            .play-button-icon {
+              opacity: 1;
+              margin-left: 0;
+            }
+            .fav-button-md {
+            }
+          }
         }
         .track-artists {
           width: 20%;
@@ -69,8 +96,16 @@
           width: 30%;
         }
         .track-release {
-          width: 20%;
+          display: none;
         }
+        .track-artists,
+        .track-album,
+        .track-release {
+          @media only screen and (max-width: 1076px) {
+            border-bottom: 8px;
+          }
+        }
+
         // justify-content: space-evenly;
       }
     }

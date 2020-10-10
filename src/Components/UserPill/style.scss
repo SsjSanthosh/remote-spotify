@@ -16,6 +16,9 @@
     }
   }
   .user-name {
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
     margin-right: 8px;
   }
   .user-menu {
@@ -26,7 +29,7 @@
     justify-content: center;
     .user-option {
       width: 100%;
-      padding: 1rem 0;
+      padding: 1rem;
     }
   }
 }

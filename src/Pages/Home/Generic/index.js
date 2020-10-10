@@ -18,7 +18,7 @@ function Generic() {
     <div className="generic-wrapper">
       {featuredPlaylists.playlists && (
         <div className="featured-playlists-wrapper">
-          <p className="featured-playlists-title fs-1-5 fw-m highlight">
+          <p className="featured-playlists-title fs-1-5 fw-m highlight border-bottom">
             {featuredPlaylists.message}
           </p>
           <div className="featured-playlists">

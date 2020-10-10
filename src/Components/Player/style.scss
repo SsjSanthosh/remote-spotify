@@ -50,6 +50,10 @@
   .player-devices-volume {
     display: flex;
     width: 10%;
+    align-items: center;
     justify-self: flex-end;
+    .player-devices {
+      margin-left: 2rem;
+    }
   }
 }

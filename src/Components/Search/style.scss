@@ -2,8 +2,17 @@
   position: fixed;
   z-index: 200;
   left: 30%;
-  top: 1rem;
+  top: 1.2rem;
   width: 350px;
+  @media only screen and (max-width: 768px) {
+    width: 100px;
+    left: 40%;
+  }
+  @media only screen and (max-width: 576px) {
+    width: 100px;
+    left: 5%;
+    top: 7.5rem;
+  }
   > input {
     width: 100%;
     &:focus {

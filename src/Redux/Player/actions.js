@@ -9,6 +9,7 @@ import {
   SEEK_TRACK_API_ENDPOINT,
   SET_REPEAT_API_ENDPOINT,
   SET_SHUFFLE_API_ENDPOINT,
+  TRANSFER_USER_PLAYBACK
 } from "utils/endpoints";
 
 import { PLAYER_ACTIONS } from "utils/constants";
@@ -94,10 +95,15 @@ export const setVolume = (perc) => async (dispatch) => {
     SET_VOLUME_API_ENDPOINT.replace("{volume}", perc)
   );
   const player = await axios.get(PLAYER_API_ENDPOINT+`?timestamp=${new Date().getTime()}`);
-  console.log(player.data.device.volume_percent,'got this');
   dispatch({
     type: PLAYER_ACTIONS.SET_VOLUME,
     payload: player.data,
   });
 
 };
+
+export const transferUserPlayback = (id) => async (dispatch) =>{
+  const transfer = await axios.put(TRANSFER_USER_PLAYBACK,{"device_ids":[id],"play":true});
+  const player = await axios.get(PLAYER_API_ENDPOINT)
+  dispatch({type:PLAYER_ACTIONS.TRANSFER_USER_PLAYBACK,payload: player.data})
+}

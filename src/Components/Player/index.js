@@ -29,6 +29,9 @@ import Track from "./Track";
 import { connect } from "react-redux";
 import { millisToDuration } from "utils/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChromecast } from "@fortawesome/free-brands-svg-icons";
+import ReactTooltip from "react-tooltip";
+import Devices from "./Devices";
 
 let interval;
 let timeout;
@@ -95,7 +98,7 @@ function Player({
       icon: faRandom,
       onClick: () => toggleShuffle(player.shuffle_state ? false : true),
       hoverClass: "hover-accent",
-      activeClass: "accent-active",
+      activeClass:player.shuffle_state?'accent-color':'',
     },
     {
       name: "prev",
@@ -123,7 +126,7 @@ function Player({
       icon: faRedo,
       onClick: () => toggleRepeat(getToggleState(player)),
       hoverClass: "hover-accent",
-      activeClass: "active-accent",
+      activeClass: player.repeat_state === "off" ? "" : "accent-color",
     },
   ];
 
@@ -163,6 +166,13 @@ function Player({
       <div className="player-devices-volume">
         <FontAwesomeIcon icon={playerVolume > 0 ? (playerVolume > 50 ? volumeHigh : volumeLow):volumeOff}/>
         <Progress completed={playerVolume} handleSeek={handleVolumeChange} />
+        <FontAwesomeIcon icon={faChromecast} className="player-devices fs-1-4 hover-white" data-for="devices" data-tip data-event="click"/>
+        <ReactTooltip id="devices" place="top"
+        type="dark"
+        effect="solid"
+        arrow={false}
+        clickable={true}
+        isCapture={true}><Devices/></ReactTooltip>
       </div>
     </div>
   ) : (

@@ -25,6 +25,7 @@ export const PLAYER_ACTIONS = {
   SAVE_TRACK: "SAVE_TRACK",
   SEEK_TRACK: "SEEK_TRACK",
   SET_VOLUME: "SET_VOLUME",
+  TRANSFER_USER_PLAYBACK: "TRANSFER_USER_PLAYBACK",
 };
 export const SCOPES = [
   "user-read-playback-state",

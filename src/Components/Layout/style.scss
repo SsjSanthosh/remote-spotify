@@ -10,7 +10,11 @@
       height: 100vh;
     }
     .sidebar-wrapper {
-      width: 15vw;
+      width: 200px;
+      @media only screen and (max-width: 576px) {
+        width: 100vw;
+        height: 19vh;
+      }
       position: fixed;
       height: 100%;
       overflow: auto;
@@ -20,12 +24,30 @@
       height: inherit;
       padding: 2em;
       min-height: 100vh;
-      width: 85vw;
+      // width: 85vw;
+      flex-grow: 1;
+
       background-color: var(--page-bg);
       padding-bottom: 5vw;
       padding-top: 4em;
+      @media only screen and (max-width: 576px) {
+        padding-top: 20vh;
+        padding-bottom: 10vh;
+      }
       overflow: auto;
-      margin-left: 15vw;
+      margin-left: 200px;
+      @media only screen and (max-width: 576px) {
+        width: 100%;
+        margin-left: 0;
+      }
+      // @media only screen and (max-width: 1076px) {
+      //   width: 80vw;
+      //   margin-left: 20vw;
+      // }
+      // @media only screen and (max-width: 768px) {
+      //   width: 75vw;
+      //   margin-left: 25vw;
+      // }
     }
   }
   .player-wrapper {
@@ -38,6 +60,9 @@
     position: fixed;
     z-index: 200;
     right: 5rem;
-    top: 1rem;
+    @media only screen and (max-width: 768px) {
+      right: 1rem;
+    }
+    top: 0.8rem;
   }
 }

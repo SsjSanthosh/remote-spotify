@@ -1,7 +1,13 @@
 .genre-page-content-wrapper {
   min-height: 100vh;
+  .page-title {
+    margin: 0 auto;
+    width: 80%;
+  }
   .genre-playlists {
     display: flex;
+    margin: 0 auto;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }

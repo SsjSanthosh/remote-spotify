@@ -14,6 +14,7 @@ const playerReducer = (state = initialState, action) => {
     case PLAYER_ACTIONS.SET_REPEAT:
     case PLAYER_ACTIONS.SET_SHUFFLE:
     case PLAYER_ACTIONS.SEEK_TRACK:
+    case PLAYER_ACTIONS.TRANSFER_USER_PLAYBACK:
       return { ...state, player: { ...payload } };
     default:
     case PLAYER_ACTIONS.SAVE_TRACK:

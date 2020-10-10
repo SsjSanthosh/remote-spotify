@@ -6,6 +6,7 @@ import "./style.scss";
 import { Link } from "react-router-dom";
 import PlayButton from "../PlayButton";
 import FavButton from "../FavButton";
+import { trimString } from "utils/utils";
 function Playlist({ playlist }) {
   const image = playlist.images.length ? playlist.images[0].url : BACKUP_IMAGE;
   return (
@@ -24,7 +25,7 @@ function Playlist({ playlist }) {
       </Link>
 
       <p className="playlist-description mb8">
-        {playlist.description.slice(0, 55) + "..."}
+        {trimString(playlist.description,30)}
       </p>
     </div>
   );

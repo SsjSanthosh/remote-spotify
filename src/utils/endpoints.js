@@ -38,7 +38,7 @@ export const ALBUM_API_ENDPOINT = `${BASE_API_URL}albums/{id}`;
 
 export const FEATURED_PLAYLISTS_API_ENDPOINT = `${BASE_API_URL}browse/featured-playlists?country=IN&locale=en_IN&limit=10`;
 
-export const SEARCH_API_ENDPOINT = `${BASE_API_URL}search?query={search}&type=artist,album,playlist,track,show,episode&limit=4&country=IN&locale=en_IN`;
+export const SEARCH_API_ENDPOINT = `${BASE_API_URL}search?query={search}&type=artist,album,playlist,track&limit=4&country=IN&locale=en_IN`;
 
 export const ARTIST_API_ENDPOINT = `${BASE_API_URL}artists/{id}`;
 
@@ -79,3 +79,7 @@ export const FOLLOW_PLAYLIST_API_ENDPOINT = `${BASE_API_URL}playlists/{id}/follo
 export const SEEK_TRACK_API_ENDPOINT = `${BASE_API_URL}me/player/seek?position_ms={position}`;
 
 export const SET_VOLUME_API_ENDPOINT = `${BASE_API_URL}me/player/volume?volume_percent={volume}`;
+
+export const GET_USER_DEVICES = `${BASE_API_URL}me/player/devices`;
+
+export const TRANSFER_USER_PLAYBACK = `${BASE_API_URL}me/player`;

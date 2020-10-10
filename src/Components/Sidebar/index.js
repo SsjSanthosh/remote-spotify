@@ -18,7 +18,7 @@ const Sidebar = React.memo(function Sidebar({ loggedIn, ...props }) {
       <div className="sidebar-content">
         <Navlinks />
         {loggedIn && (
-          <>
+          <div className="sidebar-user-content">
             <Link to="/liked-songs">
               <p className="hover-white hover-item cursor-pointer fs-1-2 liked-songs border-bottom mb16">
                 <FontAwesomeIcon icon={faHeart} className="liked-songs-icon" />{" "}
@@ -27,7 +27,7 @@ const Sidebar = React.memo(function Sidebar({ loggedIn, ...props }) {
             </Link>
             <p className="highlight fs-1-1">PLAYLISTS</p>
             <Playlists />
-          </>
+          </div>
         )}
         {!loggedIn && (
           <p className="no-highlight fw-l">

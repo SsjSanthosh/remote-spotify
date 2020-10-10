@@ -1,7 +1,10 @@
 .navigation-wrapper {
   position: absolute;
-  left: 22vw;
-  top: 2vh;
+  left: 220px;
+  @media only screen and (max-width: 576px) {
+    left: 5%;
+  }
+  top: 30px;
   width: 50px;
   display: flex;
   justify-content: space-between;

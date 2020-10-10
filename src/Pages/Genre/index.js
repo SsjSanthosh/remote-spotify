@@ -15,7 +15,7 @@ function Genre({ match, ...props }) {
 
   return (
     <div className="page-content genre-page-content-wrapper">
-      <p className="page-title">{slugToName(match.params.type)}</p>
+      <p className="page-title border-bottom">{slugToName(match.params.type)}</p>
       <div className="genre-playlists">
         {genres.playlists &&
           genres.playlists.items.map((playlist) => {

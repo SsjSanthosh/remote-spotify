@@ -4,7 +4,6 @@ import Layout from "../../Components/Layout";
 import Generic from "./Generic";
 
 import "./style.scss";
-import User from "./User";
 function Home({ loggedIn, ...props }) {
   return (
     <div className="page-content home-page-wrapper">

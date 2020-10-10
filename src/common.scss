@@ -172,6 +172,12 @@ button {
 .bg-accent {
   background-color: var(--accent-color);
 }
+.accent-color {
+  color: var(--accent-color);
+}
+.__react_component_tooltip {
+  padding: 0 !important;
+}
 .bb-1-w {
   border-bottom: 1px solid var(--text-color);
 }
