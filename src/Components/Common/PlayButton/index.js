@@ -14,6 +14,7 @@ function PlayButton({
   uri = null,
   player,
   showMessage,
+  loggedIn,
 }) {
   const [playing, setPlaying] = useState(false);
 
@@ -30,7 +31,7 @@ function PlayButton({
     }
   }, [player, uri, contextUri]);
   const handleClick = () => {
-    if (isPremium) {
+    if (isPremium && loggedIn) {
       if (playing) {
         pauseResource();
         setPlaying(false);
@@ -39,10 +40,14 @@ function PlayButton({
         setPlaying(true);
       }
     } else {
-      showMessage(
-        "Sorry! Only premium users can use the API to control playback :(",
-        "error"
-      );
+      loggedIn
+        ? showMessage(
+            "Sorry! Only premium users can use the API to control playback :(",
+            "error"
+          )
+        : showMessage(
+            "Please log in to start listening through the API! PS - Only premium users can use the API to control playback."
+          );
     }
   };
   const renderButtonByType = () => {
@@ -74,7 +79,8 @@ function PlayButton({
 const mapStateToProps = ({ auth, user, notification }) => {
   return {
     player: user.player,
-    isPremium: auth.user.product === "open" ? false : true,
+    isPremium: auth.user && auth.user.product === "open" ? false : true,
+    loggedIn: auth.loggedIn,
   };
 };
 

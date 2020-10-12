@@ -228,7 +228,7 @@ function Player({
 const mapStateToProps = ({ user, auth }) => {
   return {
     player: user.player,
-    isPremium: auth.user.product === "open" ? false : true,
+    isPremium: auth.user && auth.user.product === "open" ? false : true,
   };
 };
 

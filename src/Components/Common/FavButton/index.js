@@ -9,8 +9,10 @@ import {
 import { getDataFromEndpoint } from "Redux/Data/actions";
 import { faHeart as faSolid } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { connect } from "react-redux";
+import { showMessage } from "Redux/Notification/actions";
 
-function FavButton({ type, id, className }) {
+function FavButton({ type, id, className, loggedIn, showMessage }) {
   const getInitialState = () => {
     // refactor this, playlist named library will throw this off
     if (
@@ -36,10 +38,14 @@ function FavButton({ type, id, className }) {
   };
   useEffect(() => {}, []);
   const handleClick = () => {
-    if (saved) {
-      axios.delete(getEndpointFromType()).then((res) => setSaved(false));
+    if (loggedIn) {
+      if (saved) {
+        axios.delete(getEndpointFromType()).then((res) => setSaved(false));
+      } else {
+        axios.put(getEndpointFromType()).then((res) => setSaved(true));
+      }
     } else {
-      axios.put(getEndpointFromType()).then((res) => setSaved(true));
+      showMessage("Please login to save to your library!");
     }
   };
   return (
@@ -52,4 +58,8 @@ function FavButton({ type, id, className }) {
   );
 }
 
-export default FavButton;
+const mapStateToProps = ({ auth }) => {
+  return { loggedIn: auth.loggedIn };
+};
+
+export default connect(mapStateToProps, { showMessage })(FavButton);

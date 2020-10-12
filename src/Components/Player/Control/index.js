@@ -23,7 +23,9 @@ function Control({ options, showMessage, isPremium }) {
 }
 
 const mapStateToProps = ({ auth }) => {
-  return { isPremium: auth.user.product === "open" ? false : true };
+  return {
+    isPremium: auth.user && auth.user.product === "open" ? false : true,
+  };
 };
 
 export default connect(mapStateToProps, { showMessage })(Control);
