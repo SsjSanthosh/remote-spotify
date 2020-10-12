@@ -5,6 +5,7 @@ import { getDataFromEndpoint, slugToName } from "utils/utils";
 
 import "./style.scss";
 import Playlist from "Components/Common/Playlist";
+import Loading from "Components/Common/Loading";
 function Genre({ match, ...props }) {
   const [genres, setGenres] = useState([]);
   useEffect(() => {
@@ -15,13 +16,21 @@ function Genre({ match, ...props }) {
 
   return (
     <div className="page-content genre-page-content-wrapper">
-      <p className="page-title border-bottom">{slugToName(match.params.type)}</p>
-      <div className="genre-playlists">
-        {genres.playlists &&
-          genres.playlists.items.map((playlist) => {
-            return <Playlist playlist={playlist} />;
-          })}
-      </div>
+      {genres.playlists ? (
+        <>
+          <p className="page-title border-bottom">
+            {slugToName(match.params.type)}
+          </p>
+          <div className="genre-playlists">
+            {genres.playlists &&
+              genres.playlists.items.map((playlist) => {
+                return <Playlist playlist={playlist} />;
+              })}
+          </div>
+        </>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }

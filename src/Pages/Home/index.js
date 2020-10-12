@@ -1,10 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
-import Layout from "../../Components/Layout";
 import Generic from "./Generic";
 
 import "./style.scss";
-function Home({ loggedIn, ...props }) {
+function Home({ ...props }) {
   return (
     <div className="page-content home-page-wrapper">
       <Generic />
@@ -12,7 +10,4 @@ function Home({ loggedIn, ...props }) {
   );
 }
 
-const mapStateToProps = ({ auth }) => {
-  return { loggedIn: auth.loggedIn };
-};
-export default connect(mapStateToProps)(Home);
+export default Home;

@@ -9,16 +9,15 @@ import { getDataFromEndpoint } from "utils/utils";
 function Browse({ history }) {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    getDataFromEndpoint(BROWSE_CATEGORIES_API_ENDPOINT).then((res) =>
-      setCategories(res.data.categories)
-    ).catch(err=>{
-      if(err.response.status === 400 || err.response.status === 404){
-        history.push('/error?type="no_data_returned"')
-      }
-      else if(err.response.status === 401){
-        history.push('/error?type="expired_token"');
-      }
-    });
+    getDataFromEndpoint(BROWSE_CATEGORIES_API_ENDPOINT)
+      .then((res) => setCategories(res.data.categories))
+      .catch((err) => {
+        if (err.response.status === 400 || err.response.status === 404) {
+          history.push('/error?type="no_data_returned"');
+        } else if (err.response.status === 401) {
+          history.push('/error?type="expired_token"');
+        }
+      });
   }, []);
   return (
     <div className="page page-content browse-page-wrapper">

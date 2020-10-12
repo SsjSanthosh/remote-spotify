@@ -9,10 +9,11 @@ import { faCalendar, faClock } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.scss";
-import TrackHeader from "Components/Common/TrackHeader";
+import Loading from "Components/Common/Loading";
 function Playlists({ match, ...props }) {
   const [playlist, setPlaylist] = useState([]);
   useEffect(() => {
+    setPlaylist([]);
     getDataFromEndpoint(
       PLAYLIST_API_ENDPOINT.replace("{id}", match.params.id)
     ).then((res) => {
@@ -22,7 +23,7 @@ function Playlists({ match, ...props }) {
 
   return (
     <div className="page page-content playlists-page-wrapper">
-      {playlist.tracks && (
+      {playlist.tracks ? (
         <>
           <Header playlist={playlist} />
           <div className="tracklist-header">
@@ -44,6 +45,8 @@ function Playlists({ match, ...props }) {
             })}
           </div>
         </>
+      ) : (
+        <Loading />
       )}
     </div>
   );

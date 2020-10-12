@@ -7,9 +7,11 @@ import SearchItem from "Components/Common/SearchItem";
 import "./style.scss";
 import DisplayItems from "./DisplayItems";
 import Header from "./Header";
+import Loading from "Components/Common/Loading";
 function Search({ match, ...props }) {
   const [results, setResults] = useState([]);
   useEffect(() => {
+    setResults([]);
     getDataFromEndpoint(
       SEARCH_API_ENDPOINT.replace(
         `{search}`,
@@ -37,7 +39,7 @@ function Search({ match, ...props }) {
 
   return (
     <div className="page-content search-page-wrapper">
-      {results.tracks && renderSearchItems()}
+      {results.tracks ? renderSearchItems() : <Loading />}
     </div>
   );
 }

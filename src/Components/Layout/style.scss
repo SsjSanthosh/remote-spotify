@@ -40,14 +40,6 @@
         width: 100%;
         margin-left: 0;
       }
-      // @media only screen and (max-width: 1076px) {
-      //   width: 80vw;
-      //   margin-left: 20vw;
-      // }
-      // @media only screen and (max-width: 768px) {
-      //   width: 75vw;
-      //   margin-left: 25vw;
-      // }
     }
   }
   .player-wrapper {
@@ -65,4 +57,10 @@
     }
     top: 0.8rem;
   }
+}
+#loading-page {
+  z-index: 9999;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: black;
 }

@@ -6,7 +6,7 @@ import "./style.scss";
 import RecentlyPlayed from "./RecentlyPlayed";
 import SavedAlbums from "./SavedAlbums";
 import UserPlaylists from "./UserPlaylists";
-function Library({ loggedIn, ...props }) {
+function Library({ loggedIn }) {
   return (
     <div className="page page-content library-page-wrapper">
       {!loggedIn && <LoggedOut />}

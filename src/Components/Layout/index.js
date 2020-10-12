@@ -8,23 +8,22 @@ import "./style.scss";
 import Navigation from "Components/Common/Navigation";
 import UserPill from "Components/UserPill";
 import LoginButton from "Components/Common/LoginButton";
+import Loading from "Components/Common/Loading";
 function Layout({ token, loggedIn, history, ...props }) {
-  console.log(token)
-  return (
-    <div className="layout">
-      <Search />
-      <Navigation />
-      <div className="top-right">
-        {loggedIn ? <UserPill /> : <LoginButton />}
-      </div>
-      <div className="layout-page">
-        <Sidebar />
-        {token && props.children}
-      </div>
-      {loggedIn && <Player />}
-    </div>
-  );
+  return token ?  <div className="layout">
+  <Search />
+  <Navigation />
+  <div className="top-right">
+    {loggedIn ? <UserPill /> : <LoginButton />}
+  </div>
+  <div className="layout-page">
+    <Sidebar />
+    {token && props.children}
+  </div>
+  {loggedIn && <Player />}
+</div> : <div id="loading-page"><Loading/></div>
 }
+
 
 const mapStateToProps = ({ auth }) => {
   return {

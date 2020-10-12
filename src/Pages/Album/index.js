@@ -8,6 +8,7 @@ import { faClock } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.scss";
 import Track from "Components/Common/Track";
+import Loading from "Components/Common/Loading";
 function Album({ match,history, ...props }) {
   const [album, setAlbum] = useState({});
   useEffect(() => {
@@ -21,9 +22,10 @@ function Album({ match,history, ...props }) {
   }, []);
   
   return (
+      
     <div className="page-content album-page-wrapper">
-      {album.tracks && (
-        <>
+      {!album.tracks ? <Loading/> :
+          <>
           <Header album={album} />
           <div className="tracklist-header">
             <p className="title">TITLE</p>
@@ -34,9 +36,8 @@ function Album({ match,history, ...props }) {
           {album.tracks.items.map((track) => (
             <Track item={track} key={track.id} />
           ))}
-        </>
-      )}
-    </div>
+        </>}
+    </div> 
   );
 }
 

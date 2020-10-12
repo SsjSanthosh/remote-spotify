@@ -6,6 +6,7 @@ import { FEATURED_PLAYLISTS_API_ENDPOINT } from "utils/endpoints";
 import Playlist from "Components/Common/Playlist";
 
 import "./style.scss";
+import Loading from "Components/Common/Loading";
 function Generic() {
   const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
   useEffect(() => {
@@ -16,7 +17,7 @@ function Generic() {
 
   return (
     <div className="generic-wrapper">
-      {featuredPlaylists.playlists && (
+      {featuredPlaylists.playlists ? (
         <div className="featured-playlists-wrapper">
           <p className="featured-playlists-title fs-1-5 fw-m highlight border-bottom">
             {featuredPlaylists.message}
@@ -27,6 +28,8 @@ function Generic() {
             ))}
           </div>
         </div>
+      ) : (
+        <Loading />
       )}
     </div>
   );

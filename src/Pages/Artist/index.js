@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Layout from "Components/Layout";
 import { getDataFromEndpoint } from "utils/utils";
 import {
   ARTIST_API_ENDPOINT,
@@ -13,20 +12,21 @@ import "./style.scss";
 import TopTracks from "./TopTracks";
 import Related from "./Related";
 import Albums from "./Albums";
-function Artist({ match,history, ...props }) {
+import Loading from "Components/Common/Loading";
+function Artist({ match, history, ...props }) {
   const [artist, setArtist] = useState([]);
   const [relatedArtists, setRelatedArtists] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [tracks, setTracks] = useState([]);
   useEffect(() => {
     // Artist details
-    getDataFromEndpoint(
-      ARTIST_API_ENDPOINT.replace("{id}", match.params.id)
-    ).then((res) => setArtist(res.data)).catch(err=>{
-      if(err.response.status === 400 || err.response.status === 404){
-        history.push('/error')
-      }
-    });;
+    getDataFromEndpoint(ARTIST_API_ENDPOINT.replace("{id}", match.params.id))
+      .then((res) => setArtist(res.data))
+      .catch((err) => {
+        if (err.response.status === 400 || err.response.status === 404) {
+          history.push("/error");
+        }
+      });
     // Artist albums
     getDataFromEndpoint(
       ARTIST_ALBUM_API_ENDPOINT.replace("{id}", match.params.id)
@@ -43,14 +43,23 @@ function Artist({ match,history, ...props }) {
 
   return (
     <div className="page-content artist-page-wrapper">
-      {artist.name && <Header artist={artist} />}
-      <div className="artist-flex">
-        {tracks.tracks && <TopTracks tracks={tracks.tracks.slice(0, 5)} />}
-        {relatedArtists.artists && (
-          <Related artists={relatedArtists.artists.slice(0, 5)} />
-        )}
-      </div>
-      {albums.items && <Albums albums={albums.items.slice(0, 12)} />}
+      {artist.name &&
+      tracks.tracks &&
+      relatedArtists.artists &&
+      albums.items ? (
+        <>
+          {artist.name && <Header artist={artist} />}
+          <div className="artist-flex">
+            {tracks.tracks && <TopTracks tracks={tracks.tracks.slice(0, 5)} />}
+            {relatedArtists.artists && (
+              <Related artists={relatedArtists.artists.slice(0, 5)} />
+            )}
+          </div>
+          {albums.items && <Albums albums={albums.items.slice(0, 12)} />}
+        </>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }

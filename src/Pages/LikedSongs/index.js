@@ -6,6 +6,7 @@ import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 import "./style.scss";
 import Track from "Components/Common/Track";
+import Loading from "Components/Common/Loading";
 function LikedSongs() {
   const [tracks, setTracks] = useState([]);
   //TODO: add login check here
@@ -31,10 +32,13 @@ function LikedSongs() {
         </p>
       </div>
       <div className="liked-songs">
-        {tracks.items &&
+        {tracks.items ? (
           tracks.items.map((track) => {
             return <Track item={track} key={track.id} />;
-          })}
+          })
+        ) : (
+          <Loading />
+        )}
       </div>
     </div>
   );
