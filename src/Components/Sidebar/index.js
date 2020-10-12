@@ -30,9 +30,9 @@ const Sidebar = React.memo(function Sidebar({ loggedIn, ...props }) {
           </div>
         )}
         {!loggedIn && (
-          <p className="no-highlight fw-l">
-            Please login to see your playlists here.
-          </p>
+         <div className="sidebar-user-content"> <p className="no-highlight fw-l">
+         Please login to see your playlists here.
+       </p></div>
         )}
       </div>
     </div>

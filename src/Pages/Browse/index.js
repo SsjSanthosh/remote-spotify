@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 
 import { BROWSE_CATEGORIES_API_ENDPOINT } from "utils/endpoints";
 
-import Layout from "../../Components/Layout";
-
 import "./style.scss";
 import { getDataFromEndpoint } from "utils/utils";
 function Browse({ history }) {
@@ -13,7 +11,14 @@ function Browse({ history }) {
   useEffect(() => {
     getDataFromEndpoint(BROWSE_CATEGORIES_API_ENDPOINT).then((res) =>
       setCategories(res.data.categories)
-    );
+    ).catch(err=>{
+      if(err.response.status === 400 || err.response.status === 404){
+        history.push('/error?type="no_data_returned"')
+      }
+      else if(err.response.status === 401){
+        history.push('/error?type="expired_token"');
+      }
+    });
   }, []);
   return (
     <div className="page page-content browse-page-wrapper">

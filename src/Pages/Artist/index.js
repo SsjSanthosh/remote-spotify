@@ -13,7 +13,7 @@ import "./style.scss";
 import TopTracks from "./TopTracks";
 import Related from "./Related";
 import Albums from "./Albums";
-function Artist({ match, ...props }) {
+function Artist({ match,history, ...props }) {
   const [artist, setArtist] = useState([]);
   const [relatedArtists, setRelatedArtists] = useState([]);
   const [albums, setAlbums] = useState([]);
@@ -22,7 +22,11 @@ function Artist({ match, ...props }) {
     // Artist details
     getDataFromEndpoint(
       ARTIST_API_ENDPOINT.replace("{id}", match.params.id)
-    ).then((res) => setArtist(res.data));
+    ).then((res) => setArtist(res.data)).catch(err=>{
+      if(err.response.status === 400 || err.response.status === 404){
+        history.push('/error')
+      }
+    });;
     // Artist albums
     getDataFromEndpoint(
       ARTIST_ALBUM_API_ENDPOINT.replace("{id}", match.params.id)

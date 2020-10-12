@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { connect } from 'react-redux';
-import { transferUserPlayback } from 'Redux/Player/actions';
+import { transferUserPlayback } from 'Redux/User/actions';
 import { GET_USER_DEVICES } from 'utils/endpoints';
 import { getDataFromEndpoint } from 'utils/utils';
 import './style.scss'
@@ -18,7 +18,7 @@ function Devices({transferUserPlayback,player}) {
     )
 }
 
-const mapStateToProps = ({player})=>{
-    return {player:player.player}
+const mapStateToProps = ({user})=>{
+    return {player:user.player}
 }
 export default connect(mapStateToProps,{transferUserPlayback})(Devices);

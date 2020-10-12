@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BACKUP_IMAGE } from "utils/constants";
-import { getLinkFromType } from "utils/utils";
+import { getLinkFromType, trimString } from "utils/utils";
 import "./style.scss";
 function SearchItem({ item }) {
   const cover =
@@ -20,7 +20,7 @@ function SearchItem({ item }) {
         <img src={cover || BACKUP_IMAGE} alt={item.name} />
       </div>
       <div className="search-info">
-        <p className="search-title mb8 highlight">{item.name}</p>
+        <p className="search-title mb8 highlight">{trimString(item.name,20)}</p>
         {item.artists && (
           <p className="search-artist">{item.artists[0].name}</p>
         )}

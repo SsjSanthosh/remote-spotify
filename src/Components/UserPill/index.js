@@ -4,9 +4,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { getImageFromObject } from "utils/utils";
 import ReactTooltip from "react-tooltip";
-import { logout } from "Redux/Auth/actions";
+import { logout,setBackendToken } from "Redux/Auth/actions";
 import "./style.scss";
-function UserPill({ user, logout }) {
+function UserPill({ user, logout, setBackendToken }) {
   return (
     <div
       className="user-pill-wrapper cursor-pointer"
@@ -45,7 +45,10 @@ function UserPill({ user, logout }) {
               Open web player
             </p>
           </a>
-          <p className="user-option hover-item" onClick={logout}>
+          <p className="user-option hover-item" onClick={()=>{
+            logout();
+            setBackendToken()
+          }}>
             Log out
           </p>
         </div>
@@ -58,4 +61,4 @@ const mapStateToProps = ({ auth }) => {
   return { user: auth.user };
 };
 
-export default connect(mapStateToProps, { logout })(UserPill);
+export default connect(mapStateToProps, { logout,setBackendToken })(UserPill);

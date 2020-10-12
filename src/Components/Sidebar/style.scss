@@ -4,6 +4,7 @@
     padding: 0;
     z-index: 9;
     background-color: black !important;
+    overflow: hidden;
     .sidebar-user-content {
       display: none;
     }
@@ -15,7 +16,8 @@
         width: 100%;
         justify-content: space-evenly;
         .navlink {
-          padding: 1rem;
+          padding: 0.5rem;
+          padding-top: 1.2rem;
         }
         .active {
           border-left: 0;
@@ -32,7 +34,7 @@
     margin-top: 1rem;
     align-items: center;
     .sidebar-icon {
-      font-size: 3.2rem;
+      font-size: 2rem;
       margin-right: 1rem;
       @media only screen and (max-width: 576px) {
         font-size: 1.2rem;
@@ -40,7 +42,7 @@
       }
     }
     .sidebar-name {
-      font-size: 2rem;
+      font-size: 1rem;
       @media only screen and (max-width: 576px) {
         font-size: 1.2rem;
       }

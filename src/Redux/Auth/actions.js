@@ -20,7 +20,7 @@ export const setBackendToken = () => async (dispatch) => {
 
 export const setAuthToken = (token) => async (dispatch) => {
   const expires = new Date();
-  expires.setTime(expires.getTime() + 1 * 3600 * 1000);
+  expires.setTime(expires.getTime() + 1 * 3500 * 1000);
   cookie.set(COOKIE_NAME, `auth=${token}`, { path: "/", expires });
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   const user = await axios.get(USER_INFO_API_ENDPOINT);

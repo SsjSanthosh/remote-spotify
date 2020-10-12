@@ -9,6 +9,7 @@ import Navigation from "Components/Common/Navigation";
 import UserPill from "Components/UserPill";
 import LoginButton from "Components/Common/LoginButton";
 function Layout({ token, loggedIn, history, ...props }) {
+  console.log(token)
   return (
     <div className="layout">
       <Search />
@@ -18,7 +19,7 @@ function Layout({ token, loggedIn, history, ...props }) {
       </div>
       <div className="layout-page">
         <Sidebar />
-        {props.children}
+        {token && props.children}
       </div>
       {loggedIn && <Player />}
     </div>

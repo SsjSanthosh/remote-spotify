@@ -3,11 +3,18 @@
   width: 100vw;
   display: flex;
   // justify-content: space-between;
+  @media only screen and (max-width: 768px) {
+    // justify-content: space-between;
+  }
   align-items: center;
   .player-track-wrapper {
     justify-self: flex-start;
     padding: 1rem;
     width: 25%;
+    @media only screen and (max-width: 576px) {
+      width: 150px;
+      padding: 0;
+    }
   }
   .player-controls {
     display: flex;
@@ -17,8 +24,16 @@
     margin: 0 3rem;
     width: 50%;
     height: 100%;
+    @media only screen and (max-width: 576px) {
+      margin: 0.5rem;
+    }
     .player-buttons {
       width: 300px;
+      @media only screen and (max-width: 576px) {
+        width: 200px;
+        margin: 0;
+        justify-self: right;
+      }
       align-self: center;
       display: flex;
       justify-content: space-between;
@@ -49,11 +64,14 @@
   }
   .player-devices-volume {
     display: flex;
-    width: 10%;
+    width: 200px;
     align-items: center;
     justify-self: flex-end;
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
     .player-devices {
-      margin-left: 2rem;
+      margin-left: 1rem;
     }
   }
 }

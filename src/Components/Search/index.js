@@ -20,6 +20,7 @@ function Search(props) {
         onChange={(e) => setSearch(e.target.value)}
         onKeyPress={handleSearch}
       />
+      <button onClick={()=>props.history.push("/search?q="+search)}></button>
     </div>
   );
 }

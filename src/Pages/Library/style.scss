@@ -21,12 +21,34 @@
   .library-flex {
     display: flex;
     justify-content: space-evenly;
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      margin: 0 auto;
+    }
     .recently-played-wrapper {
       width: 40%;
       margin-right: 2rem;
     }
     .saved-albums-wrapper {
       width: 40%;
+    }
+    @media only screen and (max-width: 768px) {
+      .recently-played-wrapper,
+      .saved-albums-wrapper {
+        width: 90%;
+        margin-right: 0;
+      }
+      .recently-played-wrapper {
+        .mini-track {
+          .play-button-icon {
+            opacity: 1;
+            width: 35px;
+            height: 30px;
+          }
+        }
+      }
     }
   }
   .library-playlist-title {

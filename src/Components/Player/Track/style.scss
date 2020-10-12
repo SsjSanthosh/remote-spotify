@@ -11,13 +11,30 @@
       height: 100%;
       width: 100%;
     }
+    @media only screen and (max-width: 576px) {
+      margin: 0;
+      display: none;
+    }
   }
   .track-details {
     display: flex;
     font-size: 14px;
     flex-direction: column;
     justify-content: space-evenly;
-    min-width: 180px;
+    width: 350px;
+    @media only screen and (max-width: 576px) {
+      width: 200px;
+      display: flex;
+      flex-direction: row;
+      .track-name {
+        display: flex;
+      }
+    }
+    @media only screen and (max-width: 768px) {
+      .track-artist {
+        display: none;
+      }
+    }
     .track-name {
       font-weight: 300;
       margin-bottom: 8px;

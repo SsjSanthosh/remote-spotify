@@ -8,13 +8,18 @@ import { faClock } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.scss";
 import Track from "Components/Common/Track";
-function Album({ match, ...props }) {
+function Album({ match,history, ...props }) {
   const [album, setAlbum] = useState({});
   useEffect(() => {
     getDataFromEndpoint(
       ALBUM_API_ENDPOINT.replace("{id}", match.params.id)
-    ).then((res) => setAlbum(res.data));
+    ).then((res) => setAlbum(res.data)).catch(err=>{
+      if(err.response.status === 400 || err.response.status === 404){
+        history.push('/error')
+      }
+    });
   }, []);
+  
   return (
     <div className="page-content album-page-wrapper">
       {album.tracks && (
@@ -35,8 +40,5 @@ function Album({ match, ...props }) {
   );
 }
 
-const mapStateToProps = ({ data }) => {
-  return { album: data.data };
-};
 
 export default Album;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { connect, Provider } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch,} from "react-router-dom";
 import Cookie from "universal-cookie";
 import "./common.scss";
 import "./index.scss";
@@ -23,39 +23,44 @@ import Playlists from "./Pages/Playlists/";
 
 import { setBackendToken, setAuthToken } from "./Redux/Auth/actions";
 import Layout from "Components/Layout";
-import { setPlayer } from "Redux/Player/actions";
+import { setPlayer } from "Redux/User/actions";
 import LikedSongs from "Pages/LikedSongs";
+import Error from "Pages/Error";
 
 const cookie = new Cookie();
-// TODO - Try to find another way to do this, seems like a hack-y solution
-(function () {
-  let setToken = cookie.get(COOKIE_NAME);
-  if (setToken) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${
-      setToken.split("=")[1]
-    }`;}
-})();
-function App({ setBackendToken, setAuthToken, setPlayer }) {
+let interval;
+
+function App({ setBackendToken, setAuthToken, setPlayer, token }) {
   useEffect(() => {
     let setToken = cookie.get(COOKIE_NAME);
-    if (!setToken) {
+    setToken = decodeURIComponent(setToken);
+    let token = setToken.split("=")[1];
+    let type = setToken.split("=")[0];
+    if (!setToken || type!=='auth') {
       setBackendToken();
     } else {
-      setToken = decodeURIComponent(setToken);
-      let token = setToken.split("=")[1];
-      let type = setToken.split("=")[0];
-      if (type === "auth") {
-        setAuthToken(token);
+        setAuthToken(token)
         setPlayer();
-      }
     }
-  }, []);
+    // Refresh token every hour from backend, if token is not auth token
+    interval = setInterval(()=>{
+      let token = cookie.get(COOKIE_NAME)
+      token = decodeURIComponent(token)
+      if(token && token.includes('access')){
+        setBackendToken()
+      }
+    },1000 * 60 * 57)
+    return ()=>clearInterval(interval)
+  }, [setBackendToken,setAuthToken,setPlayer]);
+
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Switch>
+        
           {/* <Route exact path="/login" component={Login}></Route> */}
           <Layout>
+          <Switch>
             <Route
               exact
               path="/redirect"
@@ -71,14 +76,18 @@ function App({ setBackendToken, setAuthToken, setPlayer }) {
             <Route exact path="/liked-songs" component={LikedSongs}></Route>
             <Route exact path="/album/:id" component={Album}></Route>
             <Route exact path="/artist/:id" component={Artist}></Route>
+            <Route exact path="" component={Error}></Route>
+          </Switch>
           </Layout>
-        </Switch>
+       
       </BrowserRouter>
     </div>
   );
 }
-
-export default connect(null, {
+const mapStateToProps = ({auth})=>{
+  return {token:auth.token}
+}
+export default connect(mapStateToProps, {
   setAuthToken,
   setBackendToken,
   setPlayer,

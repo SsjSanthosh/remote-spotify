@@ -30,9 +30,6 @@ function Categories({ loading, ...props }) {
   );
 }
 
-const mapStateToProps = ({ data }) => ({
-  categories: data.browse.categories,
-  loading: data.loading,
-});
 
-export default connect(mapStateToProps, { getBrowseCategories })(Categories);
+
+export default (Categories);

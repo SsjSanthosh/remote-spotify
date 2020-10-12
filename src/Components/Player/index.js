@@ -20,7 +20,7 @@ import {
   setPlayer,
   seekTrack,
   setVolume,
-} from "Redux/Player/actions";
+} from "Redux/User/actions";
 import React, { useEffect, useState } from "react";
 import Control from "./Control";
 
@@ -180,8 +180,8 @@ function Player({
   );
 }
 
-const mapStateToProps = ({ player }) => {
-  return { player: player.player };
+const mapStateToProps = ({ user }) => {
+  return { player: user.player };
 };
 
 export default connect(mapStateToProps, {

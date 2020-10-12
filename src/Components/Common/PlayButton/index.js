@@ -2,7 +2,7 @@ import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { pauseResource, playResource } from "Redux/Player/actions";
+import { pauseResource, playResource } from "Redux/User/actions";
 
 function PlayButton({
   type,
@@ -61,8 +61,8 @@ function PlayButton({
   return renderButtonByType();
 }
 
-const mapStateToProps = ({ player }) => {
-  return { player: player.player };
+const mapStateToProps = ({ user }) => {
+  return { player: user.player };
 };
 
 export default connect(mapStateToProps, { playResource, pauseResource })(
