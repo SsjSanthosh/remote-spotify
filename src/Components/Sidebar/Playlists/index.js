@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getDataFromEndpoint } from "utils/utils";
 import { USER_PLAYLISTS_API_ENDPOINT } from "utils/endpoints";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Loading from "Components/Common/Loading";
 function Playlists({ match, ...props }) {
   const [playlists, setPlaylists] = useState([]);
   useEffect(() => {
@@ -9,9 +10,10 @@ function Playlists({ match, ...props }) {
       setPlaylists(res.data)
     );
   }, [match]);
+  console.log(playlists);
   return (
     <div className="sidebar-playlists">
-      {playlists.items &&
+      {playlists.items ? (
         playlists.items.map((playlist) => {
           return (
             <Link to={`/playlists/${playlist.id}`} key={playlist.id}>
@@ -20,7 +22,10 @@ function Playlists({ match, ...props }) {
               </p>
             </Link>
           );
-        })}
+        })
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }

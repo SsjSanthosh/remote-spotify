@@ -27,6 +27,11 @@ export const USER_ACTIONS = {
   SET_VOLUME: "SET_VOLUME",
   TRANSFER_USER_PLAYBACK: "TRANSFER_USER_PLAYBACK",
 };
+
+export const MESSAGE_ACTIONS = {
+  SHOW_MESSAGE: "SHOW_MESSAGE",
+  CLEAR_MESSAGE: "CLEAR_MESSAGE",
+};
 export const SCOPES = [
   "user-read-playback-state",
   "playlist-read-collaborative",

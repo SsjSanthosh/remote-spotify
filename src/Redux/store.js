@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 import authReducer from "./Auth/reducer";
 import dataReducer from "./Data/reducer";
 import playerReducer from "./User/reducer";
+import messageReducer from "./Notification/reducer";
 const initialState = {};
 
 const middlewares = [thunk];
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   data: dataReducer,
   user: playerReducer,
+  notification: messageReducer,
 });
 
 const store = createStore(

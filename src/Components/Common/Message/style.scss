@@ -1,0 +1,18 @@
+.message-div {
+  position: absolute;
+  bottom: 10vh;
+  left: 25%;
+  width: 70%;
+  padding: 1rem;
+  background: crimson;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.message-div.error {
+  background: crimson;
+}
+
+.message-div.info {
+  background-color: #4e98ed;
+}

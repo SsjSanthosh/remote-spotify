@@ -1,4 +1,10 @@
-.page-redirect {
+.redirect-page-wrapper {
   display: flex;
   justify-content: center;
+  .redirect-message {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 5rem;
+    font-size: 1.5rem;
+  }
 }

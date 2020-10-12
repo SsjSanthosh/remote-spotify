@@ -3,14 +3,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { pauseResource, playResource } from "Redux/User/actions";
+import { showMessage } from "Redux/Notification/actions";
 
 function PlayButton({
+  isPremium,
   type,
   playResource,
   pauseResource,
   contextUri = null,
   uri = null,
   player,
+  showMessage,
 }) {
   const [playing, setPlaying] = useState(false);
 
@@ -27,12 +30,19 @@ function PlayButton({
     }
   }, [player, uri, contextUri]);
   const handleClick = () => {
-    if (playing) {
-      pauseResource();
-      setPlaying(false);
+    if (isPremium) {
+      if (playing) {
+        pauseResource();
+        setPlaying(false);
+      } else {
+        playResource(uri, contextUri);
+        setPlaying(true);
+      }
     } else {
-      playResource(uri, contextUri);
-      setPlaying(true);
+      showMessage(
+        "Sorry! Only premium users can use the API to control playback :(",
+        "error"
+      );
     }
   };
   const renderButtonByType = () => {
@@ -61,10 +71,15 @@ function PlayButton({
   return renderButtonByType();
 }
 
-const mapStateToProps = ({ user }) => {
-  return { player: user.player };
+const mapStateToProps = ({ auth, user, notification }) => {
+  return {
+    player: user.player,
+    isPremium: auth.user.product === "open" ? false : true,
+  };
 };
 
-export default connect(mapStateToProps, { playResource, pauseResource })(
-  PlayButton
-);
+export default connect(mapStateToProps, {
+  playResource,
+  pauseResource,
+  showMessage,
+})(PlayButton);

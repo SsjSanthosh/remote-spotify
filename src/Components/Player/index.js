@@ -32,6 +32,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChromecast } from "@fortawesome/free-brands-svg-icons";
 import ReactTooltip from "react-tooltip";
 import Devices from "./Devices";
+import { showMessage } from "Redux/Notification/actions";
 
 let interval;
 let timeout;
@@ -46,6 +47,8 @@ function Player({
   setPlayer,
   seekTrack,
   setVolume,
+  isPremium,
+  showMessage,
 }) {
   const [trackProgress, setTrackProgress] = useState(null);
   const [playerVolume, setPlayerVolume] = useState(null);
@@ -55,7 +58,7 @@ function Player({
       setTrackProgress(player.progress_ms);
     }
     if (player.device) {
-      console.log('this what we got',player.device.volume_percent)
+      console.log("this what we got", player.device.volume_percent);
       setPlayerVolume(player.device.volume_percent);
     }
     return () => {
@@ -84,6 +87,14 @@ function Player({
         player.item && player.item.duration_ms - player.progress_ms
       );
     }
+    if (player.currently_playing_type === "ad") {
+      clearTimeout(timeout);
+      clearInterval(interval);
+      showMessage(
+        "Uh oh, playing an ad! Please refresh the page after the ad has finished playing.",
+        "info"
+      );
+    }
   }, [player, setPlayer]);
 
   useEffect(() => {}, [player, trackProgress]);
@@ -98,7 +109,7 @@ function Player({
       icon: faRandom,
       onClick: () => toggleShuffle(player.shuffle_state ? false : true),
       hoverClass: "hover-accent",
-      activeClass:player.shuffle_state?'accent-color':'',
+      activeClass: player.shuffle_state ? "accent-color" : "",
     },
     {
       name: "prev",
@@ -131,15 +142,30 @@ function Player({
   ];
 
   const handleSeek = (perc) => {
-    const seek_ms = Math.floor(player.item.duration_ms * (perc / 100));
-    seekTrack(seek_ms);
+    if (isPremium) {
+      const seek_ms = Math.floor(player.item.duration_ms * (perc / 100));
+      seekTrack(seek_ms);
+    } else {
+      showMessage(
+        "Sorry, you can't seek through the API without premium :(, you can still see the progress here.",
+        "error"
+      );
+    }
   };
 
   const handleVolumeChange = (perc) => {
-    setVolume(Math.floor(perc));
+    if (isPremium) {
+      setVolume(Math.floor(perc));
+    } else {
+      showMessage(
+        "Sorry, you can't control the volume through the API without premium :(, you can still see the progress here.",
+        "error"
+      );
+    }
   };
 
-  return player.item || player.context ? (
+  return (player.item || player.context) &&
+    player.currently_playing_type !== "ad" ? (
     <div className="player-wrapper">
       <Track track={player && (player.item || player.context)} />
       <div className="player-controls">
@@ -164,15 +190,34 @@ function Player({
         </div>
       </div>
       <div className="player-devices-volume">
-        <FontAwesomeIcon icon={playerVolume > 0 ? (playerVolume > 50 ? volumeHigh : volumeLow):volumeOff}/>
+        <FontAwesomeIcon
+          icon={
+            playerVolume > 0
+              ? playerVolume > 50
+                ? volumeHigh
+                : volumeLow
+              : volumeOff
+          }
+        />
         <Progress completed={playerVolume} handleSeek={handleVolumeChange} />
-        <FontAwesomeIcon icon={faChromecast} className="player-devices fs-1-4 hover-white" data-for="devices" data-tip data-event="click"/>
-        <ReactTooltip id="devices" place="top"
-        type="dark"
-        effect="solid"
-        arrow={false}
-        clickable={true}
-        isCapture={true}><Devices/></ReactTooltip>
+        <FontAwesomeIcon
+          icon={faChromecast}
+          className="player-devices fs-1-4 hover-white"
+          data-for="devices"
+          data-tip
+          data-event="click"
+        />
+        <ReactTooltip
+          id="devices"
+          place="top"
+          type="dark"
+          effect="solid"
+          arrow={false}
+          clickable={true}
+          isCapture={true}
+        >
+          <Devices />
+        </ReactTooltip>
       </div>
     </div>
   ) : (
@@ -180,8 +225,11 @@ function Player({
   );
 }
 
-const mapStateToProps = ({ user }) => {
-  return { player: user.player };
+const mapStateToProps = ({ user, auth }) => {
+  return {
+    player: user.player,
+    isPremium: auth.user.product === "open" ? false : true,
+  };
 };
 
 export default connect(mapStateToProps, {
@@ -194,4 +242,5 @@ export default connect(mapStateToProps, {
   setPlayer,
   setVolume,
   seekTrack,
+  showMessage,
 })(Player);
