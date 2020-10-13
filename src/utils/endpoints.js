@@ -20,7 +20,7 @@ const BASE_API_URL = `https://api.spotify.com/v1/`;
 export const BROWSE_CATEGORIES_API_ENDPOINT = `${BASE_API_URL}browse/categories?limit=50&locale=en_IN`;
 export const GENRE_PLAYLISTS_API_ENDPOINT = `${BASE_API_URL}browse/categories/{id}/playlists`;
 export const PLAYLIST_API_ENDPOINT = `${BASE_API_URL}playlists/{id}`;
-export const REDIRECT_URL = "http://localhost:3000/redirect";
+export const REDIRECT_URL = "https://spoofify-with-react.netlify.app/redirect";
 export const BACKEND_TOKEN_ENDPOINT =
   process.env.REACT_APP_BACKEND_TOKEN_ENDPOINT;
 
