@@ -10,7 +10,7 @@ import Loading from "Components/Common/Loading";
 function Generic({ history }) {
   const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
   useEffect(() => {
-    getDataFromEndpoint(FEATURED_PLAYLISTS_API_ENDPOINT + "sdsd")
+    getDataFromEndpoint(FEATURED_PLAYLISTS_API_ENDPOINT)
       .then((res) => setFeaturedPlaylists(res.data))
       .catch((err) => {
         if (err.response.status === 400 || err.response.status === 404) {
