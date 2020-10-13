@@ -1,6 +1,6 @@
 const { USER_ACTIONS } = require("utils/constants");
 
-const initialState = { player: {}, message:"" };
+const initialState = { player: {}, notification: { message: "", type: "" } };
 
 const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -16,6 +16,12 @@ const userReducer = (state = initialState, action) => {
     case USER_ACTIONS.SEEK_TRACK:
     case USER_ACTIONS.TRANSFER_USER_PLAYBACK:
       return { ...state, player: { ...payload } };
+    case USER_ACTIONS.SHOW_MESSAGE:
+      return { ...state, notification: { ...payload } };
+    case USER_ACTIONS.CLEAR_MESSAGE:
+      return { ...state, notification: { message: "", type: "" } };
+    case USER_ACTIONS.ERROR:
+      return { ...state, notification: { ...payload } };
     default:
     case USER_ACTIONS.SAVE_TRACK:
       return state;

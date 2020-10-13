@@ -8,7 +8,7 @@ import "./style.scss";
 import DisplayItems from "./DisplayItems";
 import Header from "./Header";
 import Loading from "Components/Common/Loading";
-function Search({ match, ...props }) {
+function Search({ history, match, ...props }) {
   const [results, setResults] = useState([]);
   useEffect(() => {
     setResults([]);
@@ -21,8 +21,14 @@ function Search({ match, ...props }) {
       .then((res) => {
         setResults(res.data);
       })
-      .catch((err) => console.log(err));
-  }, [match]);
+      .catch((err) => {
+        if (err.response.status === 400 || err.response.status === 404) {
+          history.push("/error?type=no_data_returned");
+        } else {
+          history.push("/error?type=token_expired");
+        }
+      });
+  }, [match, history, props.location.search]);
 
   const renderSearchItems = () => {
     return Object.keys(results).map((type) => {

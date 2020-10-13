@@ -10,11 +10,13 @@ import UserPill from "Components/UserPill";
 import LoginButton from "Components/Common/LoginButton";
 import Loading from "Components/Common/Loading";
 import Message from "Components/Common/Message";
+import ColorSwitch from "Components/Common/ColorSwitch";
 function Layout({ token, loggedIn, history, ...props }) {
   return token ? (
     <div className="layout">
       <Search />
       <Navigation />
+      <ColorSwitch />
       <div className="top-right">
         {loggedIn ? <UserPill /> : <LoginButton />}
       </div>

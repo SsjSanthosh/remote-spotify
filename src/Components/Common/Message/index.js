@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./style.scss";
-import { clearMessage } from "Redux/Notification/actions";
+import { clearMessage } from "Redux/User/actions";
 let timer;
 function Message({ notif, clearMessage }) {
   const { type, message } = notif;
@@ -14,8 +14,8 @@ function Message({ notif, clearMessage }) {
   return message && <div className={`message-div ${type}`}>{message}</div>;
 }
 
-const mapStateToProps = ({ notification }) => {
-  return { notif: notification };
+const mapStateToProps = ({ user }) => {
+  return { notif: user.notification };
 };
 
 export default connect(mapStateToProps, { clearMessage })(Message);

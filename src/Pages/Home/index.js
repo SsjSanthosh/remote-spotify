@@ -2,10 +2,10 @@ import React from "react";
 import Generic from "./Generic";
 
 import "./style.scss";
-function Home({ ...props }) {
+function Home({ history, ...props }) {
   return (
     <div className="page-content home-page-wrapper">
-      <Generic />
+      <Generic history={history} />
     </div>
   );
 }

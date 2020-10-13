@@ -1,0 +1,10 @@
+.color-switch {
+  > label {
+    padding: 0.3rem;
+  }
+  input[type="color"] {
+    opacity: 0;
+    padding: 0;
+    display: block;
+  }
+}

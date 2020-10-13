@@ -7,13 +7,19 @@ import { faClock } from "@fortawesome/free-regular-svg-icons";
 import "./style.scss";
 import Track from "Components/Common/Track";
 import Loading from "Components/Common/Loading";
-function LikedSongs() {
+function LikedSongs({ history }) {
   const [tracks, setTracks] = useState([]);
   //TODO: add login check here
   useEffect(() => {
-    getDataFromEndpoint(USER_SAVED_TRACKS_API_ENDPOINT).then((res) =>
-      setTracks(res.data)
-    );
+    getDataFromEndpoint(USER_SAVED_TRACKS_API_ENDPOINT)
+      .then((res) => setTracks(res.data))
+      .catch((err) => {
+        if (err.response.status === 400 || err.response.status === 404) {
+          history.push("/error?type=no_data_returned");
+        } else {
+          history.push("/error?type=token_expired");
+        }
+      });
   }, []);
   return (
     <div className="page-content liked-songs-wrapper">

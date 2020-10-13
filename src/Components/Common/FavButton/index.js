@@ -10,7 +10,7 @@ import { getDataFromEndpoint } from "Redux/Data/actions";
 import { faHeart as faSolid } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { connect } from "react-redux";
-import { showMessage } from "Redux/Notification/actions";
+import { showMessage } from "Redux/User/actions";
 
 function FavButton({ type, id, className, loggedIn, showMessage }) {
   const getInitialState = () => {

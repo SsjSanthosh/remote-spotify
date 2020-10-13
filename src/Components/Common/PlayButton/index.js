@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { pauseResource, playResource } from "Redux/User/actions";
-import { showMessage } from "Redux/Notification/actions";
+import { showMessage } from "Redux/User/actions";
 
 function PlayButton({
   isPremium,
@@ -31,7 +31,7 @@ function PlayButton({
     }
   }, [player, uri, contextUri]);
   const handleClick = () => {
-    if (isPremium && loggedIn) {
+    if (isPremium && loggedIn && player.device) {
       if (playing) {
         pauseResource();
         setPlaying(false);
@@ -40,14 +40,26 @@ function PlayButton({
         setPlaying(true);
       }
     } else {
-      loggedIn
-        ? showMessage(
-            "Sorry! Only premium users can use the API to control playback :(",
-            "error"
-          )
-        : showMessage(
-            "Please log in to start listening through the API! PS - Only premium users can use the API to control playback."
-          );
+      if (!loggedIn) {
+        showMessage(
+          "Please log in to start listening through the API! PS - Only premium users can use the API to control playback."
+        );
+        return;
+      }
+      if (!isPremium) {
+        showMessage(
+          "Sorry! Only premium users can use the API to control playback :(",
+          "error"
+        );
+        return;
+      }
+
+      if (!player.device) {
+        showMessage(
+          "No active device found. Please start listening on any of your devices to connect to the API. Please note, playback is only reflected to the API after 30 seconds."
+        );
+        return;
+      }
     }
   };
   const renderButtonByType = () => {

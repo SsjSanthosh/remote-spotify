@@ -7,13 +7,19 @@ import Playlist from "Components/Common/Playlist";
 
 import "./style.scss";
 import Loading from "Components/Common/Loading";
-function Generic() {
+function Generic({ history }) {
   const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
   useEffect(() => {
-    getDataFromEndpoint(FEATURED_PLAYLISTS_API_ENDPOINT).then((res) =>
-      setFeaturedPlaylists(res.data)
-    );
-  }, []);
+    getDataFromEndpoint(FEATURED_PLAYLISTS_API_ENDPOINT + "sdsd")
+      .then((res) => setFeaturedPlaylists(res.data))
+      .catch((err) => {
+        if (err.response.status === 400 || err.response.status === 404) {
+          history.push("/error?type=no_data_returned");
+        } else {
+          history.push("/error?type=token_expired");
+        }
+      });
+  }, [history]);
 
   return (
     <div className="generic-wrapper">

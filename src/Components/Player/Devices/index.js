@@ -4,7 +4,7 @@ import { transferUserPlayback } from "Redux/User/actions";
 import { GET_USER_DEVICES } from "utils/endpoints";
 import { getDataFromEndpoint } from "utils/utils";
 import "./style.scss";
-import { showMessage } from "Redux/Notification/actions";
+import { showMessage } from "Redux/User/actions";
 function Devices({ transferUserPlayback, player, isPremium, showMessage }) {
   const [devices, setDevices] = useState([]);
   useEffect(() => {

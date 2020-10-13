@@ -26,6 +26,9 @@ export const USER_ACTIONS = {
   SEEK_TRACK: "SEEK_TRACK",
   SET_VOLUME: "SET_VOLUME",
   TRANSFER_USER_PLAYBACK: "TRANSFER_USER_PLAYBACK",
+  SHOW_MESSAGE: "SHOW_MESSAGE",
+  CLEAR_MESSAGE: "CLEAR_MESSAGE",
+  ERROR: "ERROR",
 };
 
 export const MESSAGE_ACTIONS = {
@@ -102,3 +105,5 @@ export const NAV_LINKS = {
 export const COOKIE_NAME = "remoteSpotifyCookie";
 
 export const BACKUP_IMAGE = `https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2?v=1.0`;
+
+export const SPOTIFY_ACCENT_COLOR = "spotifyAccentColor";

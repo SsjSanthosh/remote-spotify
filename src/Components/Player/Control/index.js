@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { connect } from "react-redux";
-import { showMessage } from "Redux/Notification/actions";
+import { showMessage } from "Redux/User/actions";
 function Control({ options, showMessage, isPremium }) {
   const handleClick = () => {
     if (isPremium) {

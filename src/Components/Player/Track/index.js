@@ -5,6 +5,7 @@ import "./style.scss";
 import { BACKUP_IMAGE } from "utils/constants";
 import { getArtistsString } from "utils/utils";
 import { Link } from "react-router-dom";
+import FavButton from "Components/Common/FavButton";
 function Track({ track }) {
   const image =
     track.album && track.album.images.length
@@ -19,7 +20,7 @@ function Track({ track }) {
         <Link to={`/album/${track.album.id}`}>
           <span className="track-name highlight fs-1-1">
             {track.name}
-            <FontAwesomeIcon icon={faHeart} className="track-fav-icon" />
+            <FavButton type="track" id={track.id} />
           </span>
         </Link>
         <span className="track-artist ">{getArtistsString(track.artists)}</span>

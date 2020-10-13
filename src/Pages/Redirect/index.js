@@ -15,13 +15,14 @@ function Redirect({ setAuthToken, setPlayer, history, ...props }) {
         .split("&")[0]
         .replace("#access_token=", "");
       setMessage(
-        "Thank you for authorizing the app! \n We do not store any information about your account, personal or otherwise.Redirecting you to your library in 5 seconds, you can click away anytime."
+        "Thank you for authorizing the app! \n We do not store any information about your account, personal or otherwise.Redirecting you to your library in 8 seconds, you can click away anytime."
       );
       setAuthToken(token);
       setPlayer();
+      window.location.hash = "#";
       timer = setTimeout(() => {
         history.push("/library");
-      }, 5000);
+      }, 8000);
     } else if (hash.includes("error")) {
       setMessage(
         "You have not authorized the app and won't be able to access your library. That's perfectly fine! You can still use the app to look up music and browse!Redirecting you to browse in 5 seconds, you can click away anytime."
@@ -42,11 +43,11 @@ function Redirect({ setAuthToken, setPlayer, history, ...props }) {
         <br />
         <br />
         <div className="redirect-deets">
-          This app has been created solely for the purpose of exercising my
-          skills as a frontend developer. <br /> <br /> This app is not intended
-          for any sort of commercial/production use, in any way shape or form.{" "}
-          <br /> <br /> You can check out the github repo and a full working
-          demo{" "}
+          This app has been created solely for the purpose of exercising and
+          showcasing my skills as a frontend developer. <br /> <br /> This app
+          is not intended for any sort of commercial/production use, in any way
+          shape or form. <br /> <br /> You can check out the github repo and a
+          full working demo{" "}
           <a
             href="https://github.com/SsjSanthosh/remote-spotify"
             rel="noopener noreferrer"

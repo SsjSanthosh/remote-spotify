@@ -2,13 +2,20 @@
 .layout {
   overflow: hidden;
   min-height: 100vh;
-
+  .color-switch {
+    position: absolute;
+    width: 150px;
+    top: 1.2rem;
+    right: 20%;
+    font-size: 0.9rem;
+  }
   .layout-page {
     display: flex;
     .sidebar-wrapper,
     page-content {
       height: 100vh;
     }
+
     .sidebar-wrapper {
       width: 200px;
       @media only screen and (max-width: 576px) {

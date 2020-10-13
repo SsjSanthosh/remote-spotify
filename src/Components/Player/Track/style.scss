@@ -21,7 +21,7 @@
     font-size: 14px;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 350px;
+    max-width: 350px;
     @media only screen and (max-width: 576px) {
       width: 200px;
       display: flex;
@@ -43,15 +43,14 @@
       font-weight: 200;
     }
   }
-  .track-fav-icon {
-    align-self: flex-start;
-    margin-top: 12px;
-    opacity: 0.7;
-    margin-left: 1rem;
-    &:hover {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-    transition: all 0.2s ease-in-out;
+  .fav-button-div {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: none;
+    margin-left: 12px;
+  }
+  .track-name {
+    display: flex;
   }
 }

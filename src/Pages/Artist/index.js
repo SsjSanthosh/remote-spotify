@@ -24,7 +24,9 @@ function Artist({ match, history, ...props }) {
       .then((res) => setArtist(res.data))
       .catch((err) => {
         if (err.response.status === 400 || err.response.status === 404) {
-          history.push("/error");
+          history.push("/error?type=no_data_returned");
+        } else {
+          history.push("/error?type=token_expired");
         }
       });
     // Artist albums

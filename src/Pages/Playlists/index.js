@@ -10,15 +10,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.scss";
 import Loading from "Components/Common/Loading";
-function Playlists({ match, ...props }) {
+function Playlists({ match, history, ...props }) {
   const [playlist, setPlaylist] = useState([]);
   useEffect(() => {
     setPlaylist([]);
-    getDataFromEndpoint(
-      PLAYLIST_API_ENDPOINT.replace("{id}", match.params.id)
-    ).then((res) => {
-      setPlaylist(res.data);
-    });
+    getDataFromEndpoint(PLAYLIST_API_ENDPOINT.replace("{id}", match.params.id))
+      .then((res) => {
+        setPlaylist(res.data);
+      })
+      .catch((err) => {
+        if (err.response.status === 400 || err.response.status === 404) {
+          history.push("/error?type=no_data_returned");
+        } else {
+          history.push("/error?type=token_expired");
+        }
+      });
   }, [match]);
 
   return (

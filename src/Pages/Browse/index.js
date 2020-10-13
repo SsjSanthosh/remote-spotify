@@ -13,9 +13,9 @@ function Browse({ history }) {
       .then((res) => setCategories(res.data.categories))
       .catch((err) => {
         if (err.response.status === 400 || err.response.status === 404) {
-          history.push('/error?type="no_data_returned"');
-        } else if (err.response.status === 401) {
-          history.push('/error?type="expired_token"');
+          history.push("/error?type=no_data_returned");
+        } else {
+          history.push("/error?type=token_expired");
         }
       });
   }, []);

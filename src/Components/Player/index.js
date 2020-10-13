@@ -32,7 +32,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChromecast } from "@fortawesome/free-brands-svg-icons";
 import ReactTooltip from "react-tooltip";
 import Devices from "./Devices";
-import { showMessage } from "Redux/Notification/actions";
+import { showMessage } from "Redux/User/actions";
 
 let interval;
 let timeout;

@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { connect, Provider } from "react-redux";
-import { BrowserRouter, Route, Switch,} from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cookie from "universal-cookie";
 import "./common.scss";
 import "./index.scss";
 
-import { COOKIE_NAME } from "utils/constants";
+import { COOKIE_NAME, SPOTIFY_ACCENT_COLOR } from "utils/constants";
 
 import Browse from "./Pages/Browse";
 import Home from "./Pages/Home";
@@ -33,33 +33,35 @@ let interval;
 function App({ setBackendToken, setAuthToken, setPlayer, token }) {
   useEffect(() => {
     let setToken = cookie.get(COOKIE_NAME);
-    setToken = decodeURIComponent(setToken);
-    let token = setToken.split("=")[1];
-    let type = setToken.split("=")[0];
-    if (!setToken || type!=='auth') {
-      setBackendToken();
-    } else {
-        setAuthToken(token)
+    if (setToken) {
+      setToken = decodeURIComponent(setToken);
+      let token = setToken.split("=")[1];
+      let type = setToken.split("=")[0];
+      if (type === "auth") {
+        setAuthToken(token);
         setPlayer();
+      } else {
+        setBackendToken(token);
+      }
+    } else {
+      setBackendToken();
     }
     // Refresh token every hour from backend, if token is not auth token
-    interval = setInterval(()=>{
-      let token = cookie.get(COOKIE_NAME)
-      token = decodeURIComponent(token)
-      if(token && token.includes('access')){
-        setBackendToken()
+    interval = setInterval(() => {
+      let token = cookie.get(COOKIE_NAME);
+
+      if (token && decodeURIComponent(token).includes("access")) {
+        setBackendToken();
       }
-    },1000 * 60 * 57)
-    return ()=>clearInterval(interval)
-  }, [setBackendToken,setAuthToken,setPlayer]);
+    }, 1000 * 60 * 57);
 
-
+    return () => clearInterval(interval);
+  }, [setBackendToken, setAuthToken, setPlayer]);
   return (
     <div className="App">
       <BrowserRouter>
-        
-          {/* <Route exact path="/login" component={Login}></Route> */}
-          <Layout>
+        {/* <Route exact path="/login" component={Login}></Route> */}
+        <Layout>
           <Switch>
             <Route
               exact
@@ -69,7 +71,6 @@ function App({ setBackendToken, setAuthToken, setPlayer, token }) {
             <Route exact path={"/browse/"} component={Browse}></Route>
             <Route exact path="/library" component={Library}></Route>
             <Route exact path="/search" component={Search}></Route>
-
             <Route exact path="/genre/:type" component={Genre} />
             <Route exact path={["/", "/login"]} component={Home}></Route>
             <Route exact path="/playlists/:id" component={Playlists}></Route>
@@ -78,15 +79,14 @@ function App({ setBackendToken, setAuthToken, setPlayer, token }) {
             <Route exact path="/artist/:id" component={Artist}></Route>
             <Route exact path="" component={Error}></Route>
           </Switch>
-          </Layout>
-       
+        </Layout>
       </BrowserRouter>
     </div>
   );
 }
-const mapStateToProps = ({auth})=>{
-  return {token:auth.token}
-}
+const mapStateToProps = ({ auth }) => {
+  return { token: auth.token };
+};
 export default connect(mapStateToProps, {
   setAuthToken,
   setBackendToken,
