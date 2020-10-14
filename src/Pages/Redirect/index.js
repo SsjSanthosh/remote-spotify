@@ -1,4 +1,3 @@
-import Layout from "Components/Layout";
 import React, { useEffect, useState } from "react";
 
 import { connect } from "react-redux";

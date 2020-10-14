@@ -17,7 +17,9 @@ function RecentlyPlayed() {
       {recents.items &&
         recents.items
           .slice(0, 6)
-          .map((track) => <MiniTrack track={track.track} />)}
+          .map((track) => (
+            <MiniTrack track={track.track} key={track.track.id} />
+          ))}
     </div>
   );
 }

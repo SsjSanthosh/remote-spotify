@@ -1,4 +1,3 @@
-import Layout from "Components/Layout";
 import React, { useEffect, useState } from "react";
 
 import { getDataFromEndpoint } from "utils/utils";
@@ -21,7 +20,7 @@ function Album({ match, history, ...props }) {
           history.push("/error?type=token_expired");
         }
       });
-  }, []);
+  }, [history, match]);
 
   return (
     <div className="page-content album-page-wrapper">

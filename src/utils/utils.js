@@ -42,6 +42,7 @@ export const getArtistsString = (artists) => {
           to={`/artist/${artist.id}`}
           id={artist.id}
           className="link fs-0-9"
+          key={artist.id}
         >
           {artist.name}
         </Link>
@@ -52,6 +53,7 @@ export const getArtistsString = (artists) => {
         to={`/artist/${artist.id}`}
         id={artist.id}
         className="link hover-white fs-0-9"
+        key={artist.id}
       >
         {artist.name + " ,  "}
       </Link>
@@ -59,10 +61,8 @@ export const getArtistsString = (artists) => {
   });
 };
 
-
-export const trimString = (str,lim)=>{
-  if(str.length < lim){
-    return str
-  }
-  else return str.slice(0,lim) + '...'
-}
+export const trimString = (str, lim) => {
+  if (str.length < lim) {
+    return str;
+  } else return str.slice(0, lim) + "...";
+};

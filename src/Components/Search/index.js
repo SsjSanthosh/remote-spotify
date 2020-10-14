@@ -1,5 +1,3 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 
@@ -20,7 +18,9 @@ function Search(props) {
         onChange={(e) => setSearch(e.target.value)}
         onKeyPress={handleSearch}
       />
-      <button onClick={()=>props.history.push("/search?q="+search)}></button>
+      <button
+        onClick={() => props.history.push("/search?q=" + search)}
+      ></button>
     </div>
   );
 }

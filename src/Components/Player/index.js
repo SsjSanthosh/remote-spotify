@@ -58,7 +58,6 @@ function Player({
       setTrackProgress(player.progress_ms);
     }
     if (player.device) {
-      console.log("this what we got", player.device.volume_percent);
       setPlayerVolume(player.device.volume_percent);
     }
     return () => {
@@ -95,7 +94,7 @@ function Player({
         "info"
       );
     }
-  }, [player, setPlayer]);
+  }, [player, setPlayer, showMessage]);
 
   useEffect(() => {}, [player, trackProgress]);
   const getToggleState = (player) => {

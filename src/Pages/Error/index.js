@@ -3,24 +3,26 @@ import { connect } from "react-redux";
 import "./style.scss";
 import { setBackendToken } from "Redux/Auth/actions";
 import { useState, useEffect } from "react";
-function Error({ match, location, setBackendToken }) {
+function Error({ location, setBackendToken }) {
   const type = decodeURIComponent(location.search.split("=")[1]);
-  const getMessageFromType = () => {
-    switch (type) {
-      case "no_data_returned":
-        return "Could not fetch required data.Please make sure the id/parameters are correct.";
-      case "token_expired":
-        return "Looks like the login token expired. Please login again to access your account and library.";
-      default:
-        return "How did you get here?";
-    }
-  };
-  const [message, setMessage] = useState(getMessageFromType());
+
+  const [message, setMessage] = useState("");
   useEffect(() => {
+    const getMessageFromType = () => {
+      switch (type) {
+        case "no_data_returned":
+          return "Could not fetch required data.Please make sure the id/parameters are correct.";
+        case "token_expired":
+          return "Looks like the login token expired. Please login again to access your account and library.";
+        default:
+          return "How did you get here?";
+      }
+    };
+    setMessage(getMessageFromType());
     if (location.search.split("=")[1] === "token_expired") {
       setBackendToken();
     }
-  }, [location, setBackendToken]);
+  }, [location, setBackendToken, type]);
   return (
     <div className="page-content error-page-wrapper">
       <div className="error-message">

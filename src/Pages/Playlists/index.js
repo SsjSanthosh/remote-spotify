@@ -1,4 +1,3 @@
-import Layout from "Components/Layout";
 import Track from "Components/Common/Track";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -25,8 +24,7 @@ function Playlists({ match, history, ...props }) {
           history.push("/error?type=token_expired");
         }
       });
-  }, [match]);
-
+  }, [match, history]);
   return (
     <div className="page page-content playlists-page-wrapper">
       {playlist.tracks ? (
@@ -46,7 +44,11 @@ function Playlists({ match, history, ...props }) {
           <div className="playlist-tracks">
             {playlist.tracks.items.map((track, idx) => {
               return (
-                <Track item={track} key={track.id} contextUri={playlist.uri} />
+                <Track
+                  item={track}
+                  key={track.track.id}
+                  contextUri={playlist.uri}
+                />
               );
             })}
           </div>

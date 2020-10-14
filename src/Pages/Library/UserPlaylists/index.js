@@ -17,7 +17,9 @@ function UserPlaylists() {
       </p>
       <div className="library-playlists">
         {playlists.items &&
-          playlists.items.map((playlist) => <Playlist playlist={playlist} />)}
+          playlists.items.map((playlist) => (
+            <Playlist playlist={playlist} key={playlist.id} />
+          ))}
       </div>
     </>
   );

@@ -6,7 +6,6 @@ import {
   SAVE_ALBUM_API_ENDPOINT,
   SAVE_TRACK_API_ENDPOINT,
 } from "utils/endpoints";
-import { getDataFromEndpoint } from "Redux/Data/actions";
 import { faHeart as faSolid } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -49,12 +48,12 @@ function FavButton({ type, id, className, loggedIn, showMessage }) {
     }
   };
   return (
-    <div className={`fav-button-div ${className}`} onClick={handleClick}>
+    <span className={`fav-button-div ${className}`} onClick={handleClick}>
       <FontAwesomeIcon
         icon={saved ? faSolid : faRegular}
         className="fav-button-icon"
       />
-    </div>
+    </span>
   );
 }
 

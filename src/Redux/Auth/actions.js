@@ -5,7 +5,6 @@ import {
 } from "utils/endpoints";
 import Cookies from "universal-cookie";
 import { AUTH_ACTIONS, COOKIE_NAME } from "../../utils/constants";
-import { setTokenLocally } from "../../utils";
 
 const cookie = new Cookies();
 export const setBackendToken = (token = null) => async (dispatch) => {

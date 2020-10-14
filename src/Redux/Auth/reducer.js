@@ -1,5 +1,4 @@
 import { AUTH_ACTIONS } from "../../utils/constants";
-import { setTokenLocally } from "../../utils";
 
 const initialState = {
   token: null,

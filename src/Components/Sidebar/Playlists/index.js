@@ -10,7 +10,6 @@ function Playlists({ match, ...props }) {
       setPlaylists(res.data)
     );
   }, [match]);
-  console.log(playlists);
   return (
     <div className="sidebar-playlists">
       {playlists.items ? (

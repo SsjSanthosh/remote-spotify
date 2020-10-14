@@ -1,6 +1,4 @@
 import React from "react";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.scss";
 import { BACKUP_IMAGE } from "utils/constants";
 import { getArtistsString } from "utils/utils";

@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faPlay } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { BACKUP_IMAGE } from "utils/constants";
 import "./style.scss";
@@ -25,7 +23,7 @@ function Playlist({ playlist }) {
       </Link>
 
       <p className="playlist-description mb8">
-        {trimString(playlist.description,30)}
+        {trimString(playlist.description, 30)}
       </p>
     </div>
   );

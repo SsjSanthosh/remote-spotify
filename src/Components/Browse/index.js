@@ -1,8 +1,5 @@
 import Category from "Components/Common/Category";
 import React, { useState, useEffect } from "react";
-import { If, Then } from "react-if";
-import { connect } from "react-redux";
-import { getBrowseCategories } from "Redux/Data/actions";
 import { getDataFromEndpoint } from "utils/utils";
 import { BROWSE_CATEGORIES_API_ENDPOINT } from "utils/endpoints";
 
@@ -30,6 +27,4 @@ function Categories({ loading, ...props }) {
   );
 }
 
-
-
-export default (Categories);
+export default Categories;

@@ -18,7 +18,7 @@ function Browse({ history }) {
           history.push("/error?type=token_expired");
         }
       });
-  }, []);
+  }, [history]);
   return (
     <div className="page page-content browse-page-wrapper">
       <p className="page-title highlight">Browse</p>

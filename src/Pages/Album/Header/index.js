@@ -28,7 +28,11 @@ function Header({ album }) {
                 );
               }
               return (
-                <Link className="link hover-white" to={`/artist/${artist.id}`}>
+                <Link
+                  className="link hover-white"
+                  to={`/artist/${artist.id}`}
+                  key={artist.id}
+                >
                   {artist.name + ","}
                 </Link>
               );

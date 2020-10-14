@@ -1,22 +1,18 @@
-import axios from "axios";
 import React, { useEffect } from "react";
-import { connect, Provider } from "react-redux";
+import { connect } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cookie from "universal-cookie";
 import "./common.scss";
 import "./index.scss";
 
-import { COOKIE_NAME, SPOTIFY_ACCENT_COLOR } from "utils/constants";
+import { COOKIE_NAME } from "utils/constants";
 
 import Browse from "./Pages/Browse";
 import Home from "./Pages/Home";
 import Library from "./Pages/Library";
 import Search from "./Pages/Search";
-
-import Login from "./Pages/Login/";
 import Album from "./Pages/Album/";
 import Artist from "./Pages/Artist/";
-
 import Genre from "./Pages/Genre";
 import Redirect from "./Pages/Redirect/";
 import Playlists from "./Pages/Playlists/";
@@ -72,7 +68,7 @@ function App({ setBackendToken, setAuthToken, setPlayer, token }) {
             <Route exact path="/library" component={Library}></Route>
             <Route exact path="/search" component={Search}></Route>
             <Route exact path="/genre/:type" component={Genre} />
-            <Route exact path={["/", "/login"]} component={Home}></Route>
+            <Route exact path={["/"]} component={Home}></Route>
             <Route exact path="/playlists/:id" component={Playlists}></Route>
             <Route exact path="/liked-songs" component={LikedSongs}></Route>
             <Route exact path="/album/:id" component={Album}></Route>

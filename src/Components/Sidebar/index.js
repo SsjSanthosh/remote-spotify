@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navlinks from "./Navlinks";
 
 import "./style.scss";
@@ -30,9 +30,12 @@ const Sidebar = React.memo(function Sidebar({ loggedIn, ...props }) {
           </div>
         )}
         {!loggedIn && (
-         <div className="sidebar-user-content"> <p className="no-highlight fw-l">
-         Please login to see your playlists here.
-       </p></div>
+          <div className="sidebar-user-content">
+            {" "}
+            <p className="no-highlight fw-l">
+              Please login to see your playlists here.
+            </p>
+          </div>
         )}
       </div>
     </div>

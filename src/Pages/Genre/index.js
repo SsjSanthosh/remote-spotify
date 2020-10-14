@@ -1,4 +1,3 @@
-import Layout from "Components/Layout";
 import React, { useEffect, useState } from "react";
 import { GENRE_PLAYLISTS_API_ENDPOINT } from "utils/endpoints";
 import { getDataFromEndpoint, slugToName } from "utils/utils";
@@ -20,7 +19,7 @@ function Genre({ match, history, ...props }) {
           history.push("/error?type=token_expired");
         }
       });
-  }, [match]);
+  }, [match, history]);
 
   return (
     <div className="page-content genre-page-content-wrapper">
@@ -32,7 +31,7 @@ function Genre({ match, history, ...props }) {
           <div className="genre-playlists">
             {genres.playlists &&
               genres.playlists.items.map((playlist) => {
-                return <Playlist playlist={playlist} />;
+                return <Playlist playlist={playlist} key={playlist.id} />;
               })}
           </div>
         </>

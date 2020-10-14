@@ -1,5 +1,4 @@
 import { faHome, faMusic, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { BROWSE_CATEGORIES_API_ENDPOINT } from "./endpoints";
 
 export const SPOTIFY_SCOPES = [];
 

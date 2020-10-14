@@ -16,7 +16,9 @@ function SavedAlbums() {
       {albums.items &&
         albums.items
           .slice(0, 4)
-          .map((album) => <SearchItem item={album.album} />)}
+          .map((album) => (
+            <SearchItem item={album.album} key={album.album.id} />
+          ))}
     </div>
   );
 }

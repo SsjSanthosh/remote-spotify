@@ -1,8 +1,5 @@
 import MiniTrack from "Components/Common/MiniTrack";
-import Track from "Components/Common/Track";
 import React from "react";
-import { Link } from "react-router-dom";
-import { millisToDuration } from "utils/utils";
 
 function TopTracks({ tracks }) {
   return (

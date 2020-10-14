@@ -15,10 +15,9 @@ function ColorSwitch() {
     localStorage.setItem(SPOTIFY_ACCENT_COLOR, color);
   }, [color]);
 
-  console.log(color);
   return (
     <div className="color-switch">
-      <label for="color" className="cursor-pointer">
+      <label htmlFor="color" className="cursor-pointer">
         Change accent color
         <input
           type="color"

@@ -20,7 +20,7 @@ function LikedSongs({ history }) {
           history.push("/error?type=token_expired");
         }
       });
-  }, []);
+  }, [history]);
   return (
     <div className="page-content liked-songs-wrapper">
       <p className="highlight fs-3 page-title border-bottom mb16">
@@ -40,7 +40,7 @@ function LikedSongs({ history }) {
       <div className="liked-songs">
         {tracks.items ? (
           tracks.items.map((track) => {
-            return <Track item={track} key={track.id} />;
+            return <Track item={track} key={track.track.id} />;
           })
         ) : (
           <Loading />

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Layout from "Components/Layout";
+
 import { getDataFromEndpoint } from "utils/utils";
 import { SEARCH_API_ENDPOINT } from "utils/endpoints";
-import SearchItem from "Components/Common/SearchItem";
 
 import "./style.scss";
 import DisplayItems from "./DisplayItems";

@@ -41,7 +41,7 @@ function Artist({ match, history, ...props }) {
     getDataFromEndpoint(
       ARTIST_TOP_TRACKS_API_ENDPOINT.replace("{id}", match.params.id)
     ).then((res) => setTracks(res.data));
-  }, [match]);
+  }, [match, history]);
 
   return (
     <div className="page-content artist-page-wrapper">

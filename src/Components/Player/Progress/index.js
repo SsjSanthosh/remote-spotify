@@ -17,10 +17,7 @@ function Progress(props) {
     borderRadius: "inherit",
     transition: "width 0.1s ease-in-out",
   };
-  //   document.getElementById('player-progressbar').addEventListener("click", function(event){
-  //     var test = (event.clientX-this.offsetLeft) / this.offsetWidth * 100;
-  //     console.log(test);
-  // });
+
   const handleClick = (e) => {
     let perc =
       (e.clientX - ref.current.getBoundingClientRect().left) /
