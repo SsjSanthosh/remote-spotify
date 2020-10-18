@@ -1,5 +1,7 @@
 ## Spoofify - A React clone of Spotify
 
+![Project thumbnail](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/screenshots/thumbnail.png)
+
 An application to emulate all spotify features using the official REST API. Built with React,Redux and Sass, uses a node server for token. Get the node repo [here](https://github.com/SsjSanthosh/remote-spotify-server)
 
 ## Table of Contents
@@ -40,7 +42,7 @@ I wanted to build something that could showcase everything I have learnt in a re
 
 ## Demo/Screenshots
 
-![Logged in with playback](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/screenshots/thumbnail.png)
+![Logged in with playback](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/screenshots/playlistwithplayer.png)
 _Logged in with playback_
 
 ![Logged in library page](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/screenshots/loginlibrary.png)
@@ -52,16 +54,16 @@ _A playlist page, logged out_
 ![Accent color change](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/screenshots/accentchange.png)
 _Changed accent color_
 
-![Demo of auth flow and playback](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/demo/demo-1.gif)
+![Demo of auth flow and playback](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/demo/demo-playback)
 _A walkthrough of the auth flow and basic playback_
 
-![Demo of non-logged in user](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/demo/demo-2.gif)
+![Demo of non-logged in user](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/demo/demo-logged-out.gif)
 _A demo of the non-logged in user flow_
 
-![Demo of saving tracks and playling playlists](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/demo/demo-3.gif)
+![Demo of saving tracks and playling playlists](https://raw.githubusercontent.com/SsjSanthosh/remote-spotify/master/demo/demo-saving.gif)
 _A demo of saving tracks and playlist playlists_
 
-More screenshots and details [here!](https://ssjsanthosh.github.io/portfolio)
+More screenshots, features and details [here!](https://ssjsanthosh.github.io/portfolio)
 
 ## Installation and Setup Instructions
 
