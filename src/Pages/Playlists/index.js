@@ -9,25 +9,53 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.scss";
 import Loading from "Components/Common/Loading";
+import InfiniteScroll from "react-infinite-scroll-component";
 function Playlists({ match, history, ...props }) {
   const [playlist, setPlaylist] = useState([]);
+  const [tracks, setTracks] = useState([]);
+  const [nextPage, setNextPage] = useState("");
+  const fetchPlaylist = () => {
+    if (!nextPage) {
+      getDataFromEndpoint(
+        PLAYLIST_API_ENDPOINT.replace("{id}", match.params.id)
+      )
+        .then((res) => {
+          setPlaylist(res.data);
+          setTracks([...tracks, ...res.data.tracks.items]);
+          setNextPage(res.data.tracks.next);
+        })
+        .catch((err) => {
+          if (err.response.status === 400 || err.response.status === 404) {
+            history.push("/error?type=no_data_returned");
+          } else {
+            history.push("/error?type=token_expired");
+          }
+        });
+    } else {
+      getDataFromEndpoint(nextPage)
+        .then((res) => {
+          setTracks([...tracks, ...res.data.items]);
+          setNextPage(res.data.next);
+        })
+        .catch((err) => {
+          if (err.response.status === 400 || err.response.status === 404) {
+            history.push("/error?type=no_data_returned");
+          } else {
+            history.push("/error?type=token_expired");
+          }
+        });
+    }
+  };
   useEffect(() => {
     setPlaylist([]);
-    getDataFromEndpoint(PLAYLIST_API_ENDPOINT.replace("{id}", match.params.id))
-      .then((res) => {
-        setPlaylist(res.data);
-      })
-      .catch((err) => {
-        if (err.response.status === 400 || err.response.status === 404) {
-          history.push("/error?type=no_data_returned");
-        } else {
-          history.push("/error?type=token_expired");
-        }
-      });
+    setTracks([]);
+    setNextPage([]);
+    fetchPlaylist();
   }, [match, history]);
+
   return (
     <div className="page page-content playlists-page-wrapper">
-      {playlist.tracks ? (
+      {tracks.length ? (
         <>
           <Header playlist={playlist} />
           <div className="tracklist-header">
@@ -42,15 +70,21 @@ function Playlists({ match, history, ...props }) {
             </p>
           </div>
           <div className="playlist-tracks">
-            {playlist.tracks.items.map((track, idx) => {
-              return (
-                <Track
-                  item={track}
-                  key={track.track.id}
-                  contextUri={playlist.uri}
-                />
-              );
-            })}
+            <InfiniteScroll
+              dataLength={tracks.length}
+              next={fetchPlaylist}
+              hasMore={nextPage}
+            >
+              {tracks.map((track, idx) => {
+                return (
+                  <Track
+                    item={track}
+                    key={track.id}
+                    contextUri={playlist.uri}
+                  />
+                );
+              })}
+            </InfiniteScroll>
           </div>
         </>
       ) : (

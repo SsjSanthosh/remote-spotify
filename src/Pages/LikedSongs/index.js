@@ -7,12 +7,16 @@ import { faClock } from "@fortawesome/free-regular-svg-icons";
 import "./style.scss";
 import Track from "Components/Common/Track";
 import Loading from "Components/Common/Loading";
+import InfiniteScroll from "react-infinite-scroll-component";
 function LikedSongs({ history }) {
   const [tracks, setTracks] = useState([]);
-  //TODO: add login check here
-  useEffect(() => {
-    getDataFromEndpoint(USER_SAVED_TRACKS_API_ENDPOINT)
-      .then((res) => setTracks(res.data))
+  const [nextPage, setNextPage] = useState("");
+  const fetchTracks = () => {
+    getDataFromEndpoint(nextPage ? nextPage : USER_SAVED_TRACKS_API_ENDPOINT)
+      .then((res) => {
+        setTracks([...tracks, ...res.data.items]);
+        setNextPage(res.data.next);
+      })
       .catch((err) => {
         if (err.response.status === 400 || err.response.status === 404) {
           history.push("/error?type=no_data_returned");
@@ -20,7 +24,11 @@ function LikedSongs({ history }) {
           history.push("/error?type=token_expired");
         }
       });
-  }, [history]);
+  };
+  //TODO: add login check here
+  useEffect(() => {
+    fetchTracks();
+  }, []);
   return (
     <div className="page-content liked-songs-wrapper">
       <p className="highlight fs-3 page-title border-bottom mb16">
@@ -38,13 +46,19 @@ function LikedSongs({ history }) {
         </p>
       </div>
       <div className="liked-songs">
-        {tracks.items ? (
-          tracks.items.map((track) => {
-            return <Track item={track} key={track.track.id} />;
-          })
-        ) : (
-          <Loading />
-        )}
+        <InfiniteScroll
+          dataLength={tracks.length}
+          next={fetchTracks}
+          hasMore={nextPage}
+        >
+          {tracks.length ? (
+            tracks.map((track) => {
+              return <Track item={track} key={track.track.id} />;
+            })
+          ) : (
+            <Loading />
+          )}
+        </InfiniteScroll>
       </div>
     </div>
   );

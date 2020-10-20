@@ -5,7 +5,10 @@ import FavButton from "Components/Common/FavButton";
 import { displayNumber } from "utils/utils";
 
 function Header({ playlist }) {
-  const image = playlist.images.length ? playlist.images[0].url : BACKUP_IMAGE;
+  const image =
+    playlist.images && playlist.images.length
+      ? playlist.images[0].url
+      : BACKUP_IMAGE;
   return (
     <div className="playlists-page-header">
       <div className="playlist-cover">

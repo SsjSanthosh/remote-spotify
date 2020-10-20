@@ -42,7 +42,9 @@ export const playResource = (uri = null, context_uri = null) => async (
       : null;
   try {
     await axios.put(PLAY_RESOURCE_API_ENDPOINT, body);
-    const player = await axios.get(PLAYER_API_ENDPOINT);
+    const player = await axios.get(
+      PLAYER_API_ENDPOINT + `?timestamp=${new Date().getTime()}`
+    );
     dispatch({
       type: USER_ACTIONS.PLAY_RESOURCE,
       payload: player.data,

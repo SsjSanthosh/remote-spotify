@@ -1,6 +1,6 @@
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { pauseResource, playResource } from "Redux/User/actions";
 import { showMessage } from "Redux/User/actions";
@@ -96,8 +96,10 @@ const mapStateToProps = ({ auth, user, notification }) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  playResource,
-  pauseResource,
-  showMessage,
-})(PlayButton);
+export default memo(
+  connect(mapStateToProps, {
+    playResource,
+    pauseResource,
+    showMessage,
+  })(PlayButton)
+);

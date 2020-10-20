@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { millisToDuration, trimString } from "utils/utils";
 import FavButton from "../FavButton";
@@ -7,7 +7,6 @@ import PlayButton from "../PlayButton";
 import "./style.scss";
 function Track({ item, contextUri, idx = null }) {
   const track = item.track ? item.track : item;
-
   return (
     <div className="track-wrapper hover-item ">
       <div className="track ">
@@ -42,4 +41,4 @@ function Track({ item, contextUri, idx = null }) {
   );
 }
 
-export default Track;
+export default memo(Track);
