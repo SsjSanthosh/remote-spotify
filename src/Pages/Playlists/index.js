@@ -79,7 +79,7 @@ function Playlists({ match, history, ...props }) {
                 return (
                   <Track
                     item={track}
-                    key={track.id}
+                    key={track.track.id}
                     contextUri={playlist.uri}
                   />
                 );
