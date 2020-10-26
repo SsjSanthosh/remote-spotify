@@ -15,6 +15,13 @@ import {
 import { USER_ACTIONS } from "utils/constants";
 import { SET_VOLUME_API_ENDPOINT } from "../../utils/endpoints";
 
+const getErrorMessage = (err) => {
+  return (
+    err?.response?.data?.error?.message ||
+    "Something went wrong. Please try again later."
+  );
+};
+
 export const setPlayer = () => async (dispatch) => {
   const player = await axios.get(PLAYER_API_ENDPOINT);
   dispatch({ type: USER_ACTIONS.SET_PLAYER, payload: player.data });
@@ -50,12 +57,9 @@ export const playResource = (uri = null, context_uri = null) => async (
       payload: player.data,
     });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
@@ -66,12 +70,9 @@ export const pauseResource = () => async (dispatch) => {
     const player = await axios.get(PLAYER_API_ENDPOINT);
     dispatch({ type: USER_ACTIONS.PAUSE_RESOURCE, payload: player.data });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
@@ -82,12 +83,9 @@ export const playNextTrack = () => async (dispatch) => {
     const player = await axios.get(PLAYER_API_ENDPOINT);
     dispatch({ type: USER_ACTIONS.NEXT_TRACK, payload: player.data });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
@@ -98,12 +96,9 @@ export const playPrevTrack = () => async (dispatch) => {
     const player = await axios.get(PLAYER_API_ENDPOINT);
     dispatch({ type: USER_ACTIONS.PREV_TRACK, payload: player.data });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
@@ -114,12 +109,9 @@ export const toggleRepeat = (state) => async (dispatch) => {
     const player = await axios.get(PLAYER_API_ENDPOINT);
     dispatch({ type: USER_ACTIONS.SET_REPEAT, payload: player.data });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
@@ -131,12 +123,9 @@ export const toggleShuffle = (state) => async (dispatch) => {
 
     dispatch({ type: USER_ACTIONS.SET_SHUFFLE, payload: player.data });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
@@ -146,12 +135,9 @@ export const saveTrack = (ids) => async (dispatch) => {
     await axios.put(SAVE_TRACK_API_ENDPOINT.replace("{ids}", ids.split(",")));
     dispatch({ type: USER_ACTIONS.SAVE_TRACK });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
@@ -162,12 +148,9 @@ export const seekTrack = (position) => async (dispatch) => {
     const player = await axios.get(PLAYER_API_ENDPOINT);
     dispatch({ type: USER_ACTIONS.SEEK_TRACK, payload: player.data });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
@@ -183,12 +166,9 @@ export const setVolume = (perc) => async (dispatch) => {
       payload: player.data,
     });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
@@ -205,12 +185,9 @@ export const transferUserPlayback = (id) => async (dispatch) => {
       payload: player.data,
     });
   } catch (err) {
-    let message =
-      err?.response?.data?.error?.message ||
-      "Something went wrong. Please try again later.";
     dispatch({
       type: USER_ACTIONS.ERROR,
-      payload: { message, type: "error" },
+      payload: { message: getErrorMessage(err), type: "error" },
     });
   }
 };
